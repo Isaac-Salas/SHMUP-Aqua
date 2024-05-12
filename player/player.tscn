@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://jryehanqehmw"]
+[gd_scene load_steps=25 format=3 uid="uid://jryehanqehmw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_3bpno"]
 [ext_resource type="Texture2D" uid="uid://c4t1b68wphcp7" path="res://assets/player/Playerswim.png" id="1_8gb71"]
@@ -42,13 +42,17 @@ region = Rect2(192, 0, 32, 32)
 atlas = ExtResource("1_8gb71")
 region = Rect2(224, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iq23p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0irhk"]
 atlas = ExtResource("1_8gb71")
-region = Rect2(320, 0, 32, 32)
+region = Rect2(384, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tqgeq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_axsmf"]
 atlas = ExtResource("1_8gb71")
-region = Rect2(352, 0, 32, 32)
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o17vu"]
+atlas = ExtResource("1_8gb71")
+region = Rect2(448, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h72jr"]
 atlas = ExtResource("1_8gb71")
@@ -91,14 +95,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iq23p")
+"texture": SubResource("AtlasTexture_0irhk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tqgeq")
+"texture": SubResource("AtlasTexture_axsmf")
 }],
 "loop": true,
-"name": &"Down",
+"name": &"Right_Left",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o17vu")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -108,7 +120,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_g27hg")
 }],
 "loop": true,
-"name": &"Up",
+"name": &"Up_Down",
 "speed": 10.0
 }]
 
@@ -123,9 +135,8 @@ script = ExtResource("1_3bpno")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mndd0")
-animation = &"Center"
+animation = &"Right_Left"
 autoplay = "Center"
-frame_progress = 0.588418
 
 [node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_pn1mw")
