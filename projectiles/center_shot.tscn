@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://ebjh0ecljxba"]
+
+[ext_resource type="Texture2D" uid="uid://bp7mgn0g5a7io" path="res://assets/laser_small.png" id="1_6utlo"]
+[ext_resource type="Script" path="res://projectiles/center_shot.gd" id="1_t10eu"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="1_yr02y"]
+[ext_resource type="Script" path="res://components/scale_component.gd" id="4_ttpa6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dj580"]
+size = Vector2(8, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhcjn"]
+size = Vector2(10, 6)
+
+[node name="CenterShot" type="Node2D"]
+script = ExtResource("1_t10eu")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_dj580")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+rotation = 1.5708
+texture = ExtResource("1_6utlo")
+
+[node name="MoveComponent" type="Node" parent="RigidBody2D" node_paths=PackedStringArray("actor")]
+script = ExtResource("1_yr02y")
+actor = NodePath("..")
+velocity = Vector2(200, 0)
+
+[node name="Area2D" type="Area2D" parent="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_yhcjn")
+
+[node name="Timer" type="Timer" parent="RigidBody2D"]
+
+[node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_ttpa6")
+sprite = NodePath("../RigidBody2D/Sprite2D")
+scale_amount = Vector2(3, 3)
+scale_duration = 0.2
+
+[connection signal="body_entered" from="RigidBody2D/Area2D" to="." method="_on_area_2d_body_entered"]
