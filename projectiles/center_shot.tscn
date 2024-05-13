@@ -36,6 +36,8 @@ shape = SubResource("RectangleShape2D_cn0dh")
 [node name="Timer" type="Timer" parent="CenterShot"]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CenterShot"]
+position = Vector2(-141, -1)
+scale = Vector2(15.5, 1.688)
 
 [node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_ttpa6")

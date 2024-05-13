@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxdohwfvqd131"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bwkk"]
-size = Vector2(305, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkvst"]
+size = Vector2(20, 500)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l76g2"]
 size = Vector2(498, 20)
@@ -17,10 +17,11 @@ collision_mask = 513
 constant_linear_velocity = Vector2(-100, -100)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="All"]
-position = Vector2(488, 136)
-rotation = -1.5708
-shape = SubResource("RectangleShape2D_4bwkk")
+[node name="Hitable" type="Node" parent="All"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="All"]
+position = Vector2(480, 200)
+shape = SubResource("RectangleShape2D_pkvst")
 
 [node name="All2" type="StaticBody2D" parent="."]
 collision_layer = 513
@@ -34,3 +35,5 @@ shape = SubResource("RectangleShape2D_l76g2")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="All2"]
 position = Vector2(248, -8)
 shape = SubResource("RectangleShape2D_i7rsc")
+
+[node name="Hitable" type="Node" parent="All2"]

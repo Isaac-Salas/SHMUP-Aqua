@@ -14,7 +14,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	print(change)
+	#print(change)
 	if Input.is_action_just_pressed("ui_shoot"):
 		animated_sprite_2d.flip_h = false
 		change = "Shoot"
