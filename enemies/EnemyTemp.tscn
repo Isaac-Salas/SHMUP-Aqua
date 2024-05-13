@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://kbl5vm53q020"]
+
+[ext_resource type="Script" path="res://enemies/placeholders/Enemy1.gd" id="1_w7xu1"]
+[ext_resource type="Script" path="res://enemies/placeholders/Enemy_component_test.gd" id="2_u4k3r"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="4_jqne5"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="5_acjof"]
+[ext_resource type="Script" path="res://components/scale_component.gd" id="6_rnruc"]
+[ext_resource type="Script" path="res://components/shake_component.gd" id="7_5rh81"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_w7xu1")
+
+[node name="EnemyTest" type="RigidBody2D" parent="."]
+freeze = true
+script = ExtResource("2_u4k3r")
+
+[node name="EnemyHit" type="Area2D" parent="EnemyTest"]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="EnemyTest"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EnemyTest"]
+autoplay = "default"
+
+[node name="StatsComponent" type="Node" parent="EnemyTest"]
+script = ExtResource("4_jqne5")
+health = 3
+
+[node name="MoveComponent" type="Node" parent="EnemyTest" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_acjof")
+actor = NodePath("../..")
+active = false
+
+[node name="ScaleComponent" type="Node" parent="EnemyTest" node_paths=PackedStringArray("sprite")]
+script = ExtResource("6_rnruc")
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="ShakeComponent" type="Node" parent="EnemyTest" node_paths=PackedStringArray("node")]
+script = ExtResource("7_5rh81")
+node = NodePath("../AnimatedSprite2D")
+
+[connection signal="area_entered" from="EnemyTest/EnemyHit" to="EnemyTest" method="_on_area_2d_area_entered"]

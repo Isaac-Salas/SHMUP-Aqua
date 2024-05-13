@@ -1,7 +1,8 @@
 class_name EnemyComponent
 extends RigidBody2D
 
-@onready var stats_component = $StatsComponent
+@onready var stats_component = $"../StatsComponent"
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +18,7 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	print(area.name)
 	if area.name == "ShotHit":
-		collision_layer = 512
+		collision_layer = 0
 		collision_mask = 512
 		linear_velocity.x = randi_range(300,600)
 		linear_velocity.y = randi_range(-400,400)
