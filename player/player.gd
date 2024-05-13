@@ -6,6 +6,7 @@ extends RigidBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var move_component = $MoveComponent
 var change = "Center"
+var bubble = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +33,8 @@ func _input(event):
 		animated_sprite_2d.flip_v = true
 	else:
 		change = "Center"
+		bubble = true
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -3,8 +3,7 @@ class_name HurtboxComponent
 extends Area2D
 
 # Create the is_invincible boolean
-var is_invincible = false :
-	# Here we create an inline setter so we can disable and enable collision shapes on
+var is_invincible = false :	# Here we create an inline setter so we can disable and enable collision shapes on
 	# the hurtbox when is_invincible is changed.
 	set(value):
 		is_invincible = value

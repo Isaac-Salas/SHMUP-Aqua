@@ -20,4 +20,4 @@ var lower_border = ProjectSettings.get_setting("display/window/size/viewport_hei
 func _process(delta: float) -> void:
 	# clamp the x position of the actor between the left border and the right border (accounting for the margin)
 	actor.global_position.x = clamp(actor.global_position.x, left_border+marginx, right_border-marginx)
-	actor.global_position.y = clamp(actor.global_position.y, upper_border+marginy, lower_border-marginy)
+	actor.global_position.y = clamp(actor.global_position.y, upper_border+marginy, lower_border-marginy+32)

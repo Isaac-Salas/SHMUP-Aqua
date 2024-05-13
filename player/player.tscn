@@ -153,7 +153,8 @@ shape = SubResource("RectangleShape2D_0s0cm")
 [node name="PositionClampComponent" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("5_p2h6a")
 actor = NodePath("..")
-marginx = 30
+marginx = 48
+marginy = 48
 
 [node name="Centershot" type="Marker2D" parent="."]
 position = Vector2(18, 0)
