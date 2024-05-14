@@ -6,15 +6,32 @@ extends Node2D
 @onready var aguarriba = $Aguarriba
 @onready var prota = $Prota
 @onready var globo = $Prota/Globo
-@onready var barquito = $Barquito
+@onready var barcote = $Barcote
 @onready var fondo = $Fondo
 @onready var label = $Label
 @onready var animation = ""
+@onready var move_component = $Barcote/MoveComponent
+@onready var aqua = $Objetillos/Aqua
+@onready var s = $Objetillos/S
+@onready var h = $Objetillos/H
+@onready var m = $Objetillos/M
+@onready var u = $Objetillos/U
+@onready var b = $Objetillos/B
+@onready var burbujas = $Objetillos/Burbujas
+@onready var timer_2 = $TIMER2
+@onready var bplayer = $Objetillos/B/AnimatedSprite2D
+@onready var broto = $Objetillos/B/Piece/Broto
+@onready var piece = $Objetillos/B/Piece
+@onready var animation_player_2 = $Objetillos/B/Piece/AnimationPlayer2
+
+@onready var timer_p = $TimerP
+@export var done = false
 
 
 func _on_timer_timeout():
 	animation_player.play("AppearText")
 	timer.autostart = false
+	timer.queue_free()
 	canstart = true
 
 func _input(event):
@@ -23,23 +40,67 @@ func _input(event):
 			false:
 				pass
 			true:
+				
 				prota.animation_finished.connect(switching)
-				label.queue_free()
+				animation_player.play("Shrink")
 				await prota.animation_looped
+				label.queue_free()
 				prota.play("new_animation")
 				globo.visible = true
 				globo.play("Dialogo")
 				animation = "Chapuzon"
 				canstart = false
 				
-				
+	if Input.is_action_just_pressed("ui_shoot") and done == true:
+		get_tree().change_scene_to_file("res://scenes/world.tscn")
 			
 
 func switching():
+	prota.animation_finished.connect(animate)
 	prota.offset.x = 20
 	prota.offset.y = -12
+	aqua.set_deferred("freeze", false)
+	s.set_deferred("freeze", false)
+	u.set_deferred("freeze", false)
+	b.set_deferred("freeze", false)
+	timer_2.start(3)
+	timer_2.timeout.connect(fall)
+	var burbujeitors = burbujas.get_children()
+	for i in burbujeitors:
+		i.set_deferred("freeze", false)
+
 	prota.play(animation)
 	await prota.animation_finished
-	queue_free()
+	prota.queue_free()
+	prota.animation_finished.disconnect(switching)
 	
 	
+	
+func fall():
+	h.set_deferred("freeze", false)
+	m.set_deferred("freeze", false)
+	
+
+func animate():
+	pass
+
+
+func _on_area_2d_body_entered(body):
+	if body.name ==  "M":
+		move_component.active = true
+		s.lock_rotation = false
+		u.lock_rotation = false
+		b.lock_rotation = false
+		timer_p.start(3)
+		await timer_p.timeout
+		bplayer.play("P")
+		broto.play("default")
+		await broto.animation_finished
+		piece.set_deferred("freeze", false)
+		piece.angular_velocity= 50
+		animation_player_2.play("Dissapear")
+		await animation_player_2.animation_finished
+		done = true
+		piece.queue_free()
+
+

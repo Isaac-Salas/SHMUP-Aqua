@@ -1,4 +1,4 @@
-[gd_scene load_steps=418 format=3 uid="uid://sxxbbkame3i3"]
+[gd_scene load_steps=457 format=3 uid="uid://sxxbbkame3i3"]
 
 [ext_resource type="Texture2D" uid="uid://cbx13ifvgvvvr" path="res://assets/intro/Intro1.png" id="1_4mybs"]
 [ext_resource type="Script" path="res://scenes/intro.gd" id="1_hupxm"]
@@ -272,9 +272,15 @@
 [ext_resource type="Texture2D" uid="uid://br5583sn0nwjc" path="res://assets/intro/Intro262.png" id="262_xa4bl"]
 [ext_resource type="Texture2D" uid="uid://bbo8i33diq5xi" path="res://assets/intro/Intro263.png" id="263_yjudw"]
 [ext_resource type="Texture2D" uid="uid://d0bfeh81gttli" path="res://assets/intro/Intro264.png" id="264_bk8e3"]
-[ext_resource type="FontFile" uid="uid://clqffn28i0js2" path="res://fonts/retro_computer_personal_use.ttf" id="265_laqtu"]
 [ext_resource type="Texture2D" uid="uid://ccpb7p5x5onn8" path="res://assets/aguaarriba.png" id="266_5tlrq"]
 [ext_resource type="Texture2D" uid="uid://c3tketqlqs8qf" path="res://assets/ProtaSentado.png" id="269_v4gyy"]
+[ext_resource type="FontFile" uid="uid://o8h3ht2nrp4k" path="res://fonts/ka1.ttf" id="275_qloai"]
+[ext_resource type="Texture2D" uid="uid://dg3ocndwe2q5r" path="res://assets/AQUA.png" id="276_cm4q1"]
+[ext_resource type="Texture2D" uid="uid://sloemj7jc4nw" path="res://assets/Shmub.png" id="277_erp7c"]
+[ext_resource type="Texture2D" uid="uid://dp7rnk8mmsfan" path="res://assets/Shup.png" id="278_skcgr"]
+[ext_resource type="PackedScene" uid="uid://dwmqfhgnjft32" path="res://scenes/Props/burbuja_MD.tscn" id="279_i3kn7"]
+[ext_resource type="Texture2D" uid="uid://t2s3yjuav0ch" path="res://assets/BrokeB.png" id="279_qh5qx"]
+[ext_resource type="PackedScene" uid="uid://b2m7k1g5w3u84" path="res://scenes/Props/burbuja_CH.tscn" id="280_n68x8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_im600"]
 atlas = ExtResource("3_ig6ex")
@@ -2116,17 +2122,232 @@ tracks/1/keys = {
 "values": [55]
 }
 
+[sub_resource type="Animation" id="Animation_ia55x"]
+resource_name = "Shrink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [55, 55]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5w7hm"]
 _data = {
 "AppearText": SubResource("Animation_b1c3d"),
 "Big": SubResource("Animation_q2gvk"),
-"RESET": SubResource("Animation_krx38")
+"RESET": SubResource("Animation_krx38"),
+"Shrink": SubResource("Animation_ia55x")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l2lnw"]
+radius = 52.0096
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ko26"]
+size = Vector2(92, 96.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1sh2"]
+size = Vector2(52, 96.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7dwe"]
+size = Vector2(31, 96.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scmbw"]
+radius = 16.906
+height = 60.4565
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_areyt"]
+radius = 16.906
+height = 60.4565
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1l3c"]
+size = Vector2(312.875, 84.065)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vb3l"]
+size = Vector2(51, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eixvu"]
+atlas = ExtResource("277_erp7c")
+region = Rect2(0, 0, 56, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42urm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eixvu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owfje"]
+size = Vector2(49, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve5sq"]
+atlas = ExtResource("277_erp7c")
+region = Rect2(56, 0, 56, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qyhr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve5sq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lg7dc"]
+size = Vector2(49, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g82y6"]
+atlas = ExtResource("277_erp7c")
+region = Rect2(112, 0, 56, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1db7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g82y6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_erst4"]
+size = Vector2(51, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7usen"]
+atlas = ExtResource("277_erp7c")
+region = Rect2(168, 0, 56, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5rxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7usen")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf7y5"]
+size = Vector2(51, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6il3"]
+atlas = ExtResource("278_skcgr")
+region = Rect2(226, 0, 56, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67tql"]
+atlas = ExtResource("277_erp7c")
+region = Rect2(227, 0, 55, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqh4q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6il3")
+}],
+"loop": true,
+"name": &"P",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67tql")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak1pf"]
+atlas = ExtResource("279_qh5qx")
+region = Rect2(0, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gddc8"]
+atlas = ExtResource("279_qh5qx")
+region = Rect2(41, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fptx"]
+atlas = ExtResource("279_qh5qx")
+region = Rect2(82, 0, 41, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gs8jh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak1pf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gddc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fptx")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbkmk"]
+size = Vector2(35, 31)
+
+[sub_resource type="Animation" id="Animation_8ixoh"]
+resource_name = "Dissapear"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objetillos/B/Piece/Broto:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t6s1f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objetillos/B/Piece/Broto:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2dfny"]
+_data = {
+"Dissapear": SubResource("Animation_8ixoh"),
+"RESET": SubResource("Animation_t6s1f")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmblu"]
+size = Vector2(480, 20)
 
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_hupxm")
 
 [node name="Barcote" type="StaticBody2D" parent="."]
+collision_layer = 13
+collision_mask = 13
 
 [node name="Barquito" type="AnimatedSprite2D" parent="Barcote"]
 z_index = -1
@@ -2141,6 +2362,7 @@ shape = SubResource("RectangleShape2D_0tq0f")
 [node name="MoveComponent" type="Node" parent="Barcote" node_paths=PackedStringArray("actor")]
 script = ExtResource("3_to4vh")
 actor = NodePath("..")
+active = false
 
 [node name="Node" type="Node" parent="Barcote" node_paths=PackedStringArray("move_component")]
 script = ExtResource("4_u16dg")
@@ -2185,14 +2407,13 @@ offset_right = 470.0
 offset_bottom = 155.0
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("265_laqtu")
+theme_override_fonts/font = ExtResource("275_qloai")
 theme_override_font_sizes/font_size = 55
 text = "Press
 something?"
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 6.0
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -2200,4 +2421,285 @@ libraries = {
 "": SubResource("AnimationLibrary_5w7hm")
 }
 
+[node name="Objetillos" type="Node2D" parent="."]
+
+[node name="Aqua" type="RigidBody2D" parent="Objetillos"]
+position = Vector2(244, -284)
+collision_layer = 9
+collision_mask = 9
+mass = 0.5
+freeze = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Objetillos/Aqua"]
+z_index = -2
+texture = ExtResource("276_cm4q1")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetillos/Aqua"]
+position = Vector2(-44, 20)
+shape = SubResource("CircleShape2D_l2lnw")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Objetillos/Aqua"]
+position = Vector2(102, 17.75)
+shape = SubResource("RectangleShape2D_8ko26")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Objetillos/Aqua"]
+position = Vector2(-123, 18)
+shape = SubResource("RectangleShape2D_k1sh2")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Objetillos/Aqua"]
+position = Vector2(16.5, 19)
+shape = SubResource("RectangleShape2D_q7dwe")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Objetillos/Aqua"]
+position = Vector2(-170, -48)
+rotation = 0.698132
+shape = SubResource("CapsuleShape2D_scmbw")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Objetillos/Aqua"]
+position = Vector2(166, -47)
+rotation = -0.698132
+shape = SubResource("CapsuleShape2D_areyt")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="Objetillos/Aqua"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetillos/Aqua/Area2D"]
+shape = SubResource("RectangleShape2D_i1l3c")
+
+[node name="S" type="RigidBody2D" parent="Objetillos"]
+position = Vector2(128, -404)
+mass = 0.3
+gravity_scale = 0.5
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetillos/S"]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_0vb3l")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objetillos/S"]
+sprite_frames = SubResource("SpriteFrames_42urm")
+metadata/_edit_lock_ = true
+
+[node name="H" type="RigidBody2D" parent="Objetillos"]
+position = Vector2(185.285, -492)
+mass = 0.3
+sleeping = true
+freeze = true
+linear_velocity = Vector2(5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetillos/H"]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_owfje")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objetillos/H"]
+sprite_frames = SubResource("SpriteFrames_6qyhr")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="M" type="RigidBody2D" parent="Objetillos"]
+position = Vector2(236, -492)
+mass = 0.3
+sleeping = true
+freeze = true
+linear_velocity = Vector2(5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetillos/M"]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_lg7dc")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objetillos/M"]
+sprite_frames = SubResource("SpriteFrames_k1db7")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="U" type="RigidBody2D" parent="Objetillos"]
+position = Vector2(244, -404)
+mass = 0.3
+gravity_scale = 0.5
+lock_rotation = true
+freeze = true
+constant_force = Vector2(10, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetillos/U"]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_erst4")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objetillos/U"]
+sprite_frames = SubResource("SpriteFrames_y5rxm")
+metadata/_edit_lock_ = true
+
+[node name="B" type="RigidBody2D" parent="Objetillos"]
+position = Vector2(345.155, -404)
+mass = 0.3
+gravity_scale = 0.5
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetillos/B"]
+position = Vector2(2.345, 0)
+shape = SubResource("RectangleShape2D_lf7y5")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objetillos/B"]
+sprite_frames = SubResource("SpriteFrames_hqh4q")
+animation = &"P"
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="Piece" type="RigidBody2D" parent="Objetillos/B"]
+position = Vector2(7.5, 6.5)
+collision_layer = 4
+collision_mask = 4
+freeze = true
+
+[node name="Broto" type="AnimatedSprite2D" parent="Objetillos/B/Piece"]
+sprite_frames = SubResource("SpriteFrames_gs8jh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetillos/B/Piece"]
+position = Vector2(2.845, 4)
+shape = SubResource("RectangleShape2D_mbkmk")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Objetillos/B/Piece"]
+root_node = NodePath("../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_2dfny")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Objetillos"]
+position = Vector2(240, 280)
+collision_layer = 13
+collision_mask = 13
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetillos/StaticBody2D"]
+shape = SubResource("RectangleShape2D_wmblu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Objetillos/StaticBody2D"]
+position = Vector2(-250, -135)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_wmblu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Objetillos/StaticBody2D"]
+position = Vector2(250, -127)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_wmblu")
+metadata/_edit_lock_ = true
+
+[node name="Burbujas" type="Node2D" parent="Objetillos"]
+
+[node name="BurbujaGDE4" parent="Objetillos/Burbujas" instance=ExtResource("279_i3kn7")]
+position = Vector2(136, -31)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="BurbujaGDE6" parent="Objetillos/Burbujas" instance=ExtResource("279_i3kn7")]
+position = Vector2(299, -31)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="BurbujaGDE7" parent="Objetillos/Burbujas" instance=ExtResource("279_i3kn7")]
+position = Vector2(361, -46)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="BurbujaGDE14" parent="Objetillos/Burbujas" instance=ExtResource("279_i3kn7")]
+position = Vector2(248, -64)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="BurbujaGDE8" parent="Objetillos/Burbujas" instance=ExtResource("280_n68x8")]
+position = Vector2(182, -49)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="BurbujaGDE11" parent="Objetillos/Burbujas" instance=ExtResource("280_n68x8")]
+position = Vector2(80, -34)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="BurbujaGDE16" parent="Objetillos/Burbujas" instance=ExtResource("280_n68x8")]
+position = Vector2(26, -39)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="BurbujaGDE17" parent="Objetillos/Burbujas" instance=ExtResource("280_n68x8")]
+position = Vector2(33, -79)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="BurbujaGDE12" parent="Objetillos/Burbujas" instance=ExtResource("280_n68x8")]
+position = Vector2(224, -29)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="BurbujaGDE10" parent="Objetillos/Burbujas" instance=ExtResource("280_n68x8")]
+position = Vector2(441, -24)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="BurbujaGDE13" parent="Objetillos/Burbujas" instance=ExtResource("280_n68x8")]
+position = Vector2(462, -56)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="BurbujaGDE15" parent="Objetillos/Burbujas" instance=ExtResource("280_n68x8")]
+position = Vector2(416, -58)
+collision_layer = 8
+collision_mask = 8
+lock_rotation = true
+freeze = true
+linear_velocity = Vector2(0, 250)
+
+[node name="TIMER2" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="TimerP" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Objetillos/Aqua/Area2D" to="." method="_on_area_2d_body_entered"]
