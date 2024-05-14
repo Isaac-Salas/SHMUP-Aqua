@@ -1,5 +1,5 @@
 extends Node2D
-@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var loop = $Loop
 @onready var animation_player = $AnimationPlayer
 @onready var canstart = false
 @onready var timer = $Timer
@@ -17,5 +17,6 @@ func _input(event):
 			false:
 				pass
 			true:
+				loop.queue_free()
 				animation_player.play("RESET")
 			

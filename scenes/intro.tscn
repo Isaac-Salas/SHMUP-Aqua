@@ -1,4 +1,4 @@
-[gd_scene load_steps=272 format=3 uid="uid://sxxbbkame3i3"]
+[gd_scene load_steps=282 format=3 uid="uid://sxxbbkame3i3"]
 
 [ext_resource type="Texture2D" uid="uid://cbx13ifvgvvvr" path="res://assets/intro/Intro1.png" id="1_4mybs"]
 [ext_resource type="Script" path="res://scenes/intro.gd" id="1_hupxm"]
@@ -266,6 +266,7 @@
 [ext_resource type="Texture2D" uid="uid://bbo8i33diq5xi" path="res://assets/intro/Intro263.png" id="263_yjudw"]
 [ext_resource type="Texture2D" uid="uid://d0bfeh81gttli" path="res://assets/intro/Intro264.png" id="264_bk8e3"]
 [ext_resource type="FontFile" uid="uid://clqffn28i0js2" path="res://fonts/retro_computer_personal_use.ttf" id="265_laqtu"]
+[ext_resource type="Texture2D" uid="uid://ccpb7p5x5onn8" path="res://assets/aguaarriba.png" id="266_5tlrq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ynuo"]
 animations = [{
@@ -1067,6 +1068,70 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8awpe"]
+atlas = ExtResource("266_5tlrq")
+region = Rect2(0, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6eiq"]
+atlas = ExtResource("266_5tlrq")
+region = Rect2(480, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bseg"]
+atlas = ExtResource("266_5tlrq")
+region = Rect2(960, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3ler"]
+atlas = ExtResource("266_5tlrq")
+region = Rect2(1440, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tokut"]
+atlas = ExtResource("266_5tlrq")
+region = Rect2(1920, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_by7wb"]
+atlas = ExtResource("266_5tlrq")
+region = Rect2(2400, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p84ro"]
+atlas = ExtResource("266_5tlrq")
+region = Rect2(2880, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uqvv"]
+atlas = ExtResource("266_5tlrq")
+region = Rect2(3360, 0, 480, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2rej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8awpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6eiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bseg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3ler")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tokut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_by7wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p84ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uqvv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="Animation" id="Animation_b1c3d"]
 resource_name = "AppearText"
 length = 2.0
@@ -1148,9 +1213,18 @@ _data = {
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_hupxm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Fondo" type="AnimatedSprite2D" parent="."]
+z_index = -2
 sprite_frames = SubResource("SpriteFrames_8ynuo")
 autoplay = "default"
+centered = false
+
+[node name="Aguarriba" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_t2rej")
+autoplay = "default"
+frame = 4
+frame_progress = 0.478783
 centered = false
 
 [node name="Label" type="Label" parent="."]
