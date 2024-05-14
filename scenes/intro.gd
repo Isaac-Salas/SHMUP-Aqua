@@ -1,9 +1,15 @@
 extends Node2D
-@onready var loop = $Loop
+
 @onready var animation_player = $AnimationPlayer
 @onready var canstart = false
 @onready var timer = $Timer
-
+@onready var aguarriba = $Aguarriba
+@onready var prota = $Prota
+@onready var globo = $Prota/Globo
+@onready var barquito = $Barquito
+@onready var fondo = $Fondo
+@onready var label = $Label
+@onready var animation = ""
 
 
 func _on_timer_timeout():
@@ -17,6 +23,23 @@ func _input(event):
 			false:
 				pass
 			true:
-				loop.queue_free()
-				animation_player.play("RESET")
+				prota.animation_finished.connect(switching)
+				label.queue_free()
+				await prota.animation_looped
+				prota.play("new_animation")
+				globo.visible = true
+				globo.play("Dialogo")
+				animation = "Chapuzon"
+				canstart = false
+				
+				
 			
+
+func switching():
+	prota.offset.x = 20
+	prota.offset.y = -12
+	prota.play(animation)
+	await prota.animation_finished
+	queue_free()
+	
+	
