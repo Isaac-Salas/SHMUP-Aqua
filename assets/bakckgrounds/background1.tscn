@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://cj3yvsqywbuq2"]
+[gd_scene load_steps=18 format=3 uid="uid://cj3yvsqywbuq2"]
 
-[ext_resource type="Texture2D" uid="uid://xenxip2ia6k6" path="res://assets/bakckgrounds/Test.png" id="1_ocsms"]
+[ext_resource type="Texture2D" uid="uid://neny60uy13dj" path="res://assets/bakckgrounds/Backgground.png" id="1_10i6i"]
 [ext_resource type="Texture2D" uid="uid://c46yhsncr5mi3" path="res://assets/bakckgrounds/Sky.png" id="2_3reua"]
 
 [sub_resource type="GDScript" id="GDScript_yyf65"]
@@ -17,36 +17,64 @@ func _process(delta):
 	pass
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r4vlb"]
-atlas = ExtResource("1_ocsms")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjxrt"]
+atlas = ExtResource("1_10i6i")
 region = Rect2(0, 0, 480, 270)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ok5pc"]
-atlas = ExtResource("1_ocsms")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nk5d"]
+atlas = ExtResource("1_10i6i")
 region = Rect2(480, 0, 480, 270)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2h5sg"]
-atlas = ExtResource("1_ocsms")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp256"]
+atlas = ExtResource("1_10i6i")
 region = Rect2(960, 0, 480, 270)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cg1rh"]
-atlas = ExtResource("1_ocsms")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fb2d"]
+atlas = ExtResource("1_10i6i")
 region = Rect2(1440, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2n52"]
+atlas = ExtResource("1_10i6i")
+region = Rect2(1920, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krvex"]
+atlas = ExtResource("1_10i6i")
+region = Rect2(2400, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drlbr"]
+atlas = ExtResource("1_10i6i")
+region = Rect2(2880, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rhne"]
+atlas = ExtResource("1_10i6i")
+region = Rect2(3360, 0, 480, 270)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i185y"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r4vlb")
+"texture": SubResource("AtlasTexture_sjxrt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ok5pc")
+"texture": SubResource("AtlasTexture_7nk5d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2h5sg")
+"texture": SubResource("AtlasTexture_mp256")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cg1rh")
+"texture": SubResource("AtlasTexture_8fb2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2n52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krvex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drlbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rhne")
 }],
 "loop": true,
 "name": &"default",
@@ -105,8 +133,7 @@ stretch_mode = 1
 z_index = 5
 sprite_frames = SubResource("SpriteFrames_i185y")
 autoplay = "default"
-frame = 2
-frame_progress = 0.20063
+frame_progress = 0.0933159
 centered = false
 
 [node name="TextureRect2" type="TextureRect" parent="Sea"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://kbl5vm53q020"]
+[gd_scene load_steps=10 format=3 uid="uid://kbl5vm53q020"]
 
 [ext_resource type="Script" path="res://enemies/placeholders/Enemy1.gd" id="1_w7xu1"]
 [ext_resource type="Script" path="res://enemies/placeholders/Enemy_component_test.gd" id="2_u4k3r"]
@@ -6,15 +6,20 @@
 [ext_resource type="Script" path="res://components/move_component.gd" id="5_acjof"]
 [ext_resource type="Script" path="res://components/scale_component.gd" id="6_rnruc"]
 [ext_resource type="Script" path="res://components/shake_component.gd" id="7_5rh81"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="7_75l6v"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="8_th8mv"]
+[ext_resource type="Script" path="res://components/hurt_component.gd" id="9_djjv2"]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_w7xu1")
 
 [node name="EnemyTest" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 freeze = true
+linear_velocity = Vector2(-100, 0)
+constant_force = Vector2(100, 0)
 script = ExtResource("2_u4k3r")
-
-[node name="EnemyHit" type="Area2D" parent="EnemyTest"]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="EnemyTest"]
 
@@ -22,8 +27,8 @@ script = ExtResource("2_u4k3r")
 autoplay = "default"
 
 [node name="StatsComponent" type="Node" parent="EnemyTest"]
+unique_name_in_owner = true
 script = ExtResource("4_jqne5")
-health = 3
 
 [node name="MoveComponent" type="Node" parent="EnemyTest" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_acjof")
@@ -40,4 +45,13 @@ node = NodePath("../AnimatedSprite2D")
 
 [node name="Hitable" type="Node" parent="EnemyTest"]
 
-[connection signal="area_entered" from="EnemyTest/EnemyHit" to="EnemyTest" method="_on_area_2d_area_entered"]
+[node name="HurtboxComponent" type="Area2D" parent="EnemyTest"]
+script = ExtResource("7_75l6v")
+
+[node name="HitboxComponent" type="Area2D" parent="EnemyTest"]
+script = ExtResource("8_th8mv")
+
+[node name="HurtComponent" type="Node" parent="EnemyTest" node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("9_djjv2")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")

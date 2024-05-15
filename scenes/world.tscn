@@ -1,10 +1,74 @@
-[gd_scene load_steps=6 format=3 uid="uid://l20746qikf75"]
+[gd_scene load_steps=15 format=3 uid="uid://l20746qikf75"]
 
 [ext_resource type="PackedScene" uid="uid://jryehanqehmw" path="res://player/player.tscn" id="1_nahrg"]
 [ext_resource type="PackedScene" uid="uid://cxdohwfvqd131" path="res://scenes/Limits.tscn" id="2_7jcr3"]
-[ext_resource type="PackedScene" uid="uid://cegtj4xrj1cpp" path="res://enemies/placeholders/Enemy1.tscn" id="3_dngg1"]
 [ext_resource type="PackedScene" uid="uid://cj3yvsqywbuq2" path="res://assets/bakckgrounds/background1.tscn" id="4_3pwnq"]
 [ext_resource type="PackedScene" uid="uid://1db6npbnb4mr" path="res://enemies/Enemy1.tscn" id="4_qffyh"]
+[ext_resource type="Texture2D" uid="uid://dltyehf308ppj" path="res://assets/bakckgrounds/Backggroundfilter.png" id="5_d3iw4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsmr5"]
+atlas = ExtResource("5_d3iw4")
+region = Rect2(0, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuo4o"]
+atlas = ExtResource("5_d3iw4")
+region = Rect2(480, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2m72"]
+atlas = ExtResource("5_d3iw4")
+region = Rect2(960, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68lyd"]
+atlas = ExtResource("5_d3iw4")
+region = Rect2(1440, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8g06"]
+atlas = ExtResource("5_d3iw4")
+region = Rect2(1920, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep8y5"]
+atlas = ExtResource("5_d3iw4")
+region = Rect2(2400, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddrfo"]
+atlas = ExtResource("5_d3iw4")
+region = Rect2(2880, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqku0"]
+atlas = ExtResource("5_d3iw4")
+region = Rect2(3360, 0, 480, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vld3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsmr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuo4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2m72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68lyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8g06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep8y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddrfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqku0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="World" type="Node2D"]
 
@@ -15,6 +79,36 @@ position = Vector2(64, 128)
 
 [node name="Enemy" parent="." instance=ExtResource("4_qffyh")]
 position = Vector2(136, 112)
+
+[node name="Enemy6" parent="." instance=ExtResource("4_qffyh")]
+position = Vector2(220, 205)
+
+[node name="Enemy7" parent="." instance=ExtResource("4_qffyh")]
+position = Vector2(220, 205)
+
+[node name="Enemy8" parent="." instance=ExtResource("4_qffyh")]
+position = Vector2(362, 117)
+
+[node name="Enemy9" parent="." instance=ExtResource("4_qffyh")]
+position = Vector2(341, 203)
+
+[node name="Enemy10" parent="." instance=ExtResource("4_qffyh")]
+position = Vector2(320, 129)
+
+[node name="Enemy11" parent="." instance=ExtResource("4_qffyh")]
+position = Vector2(198, 173)
+
+[node name="Enemy12" parent="." instance=ExtResource("4_qffyh")]
+position = Vector2(191, 89)
+
+[node name="Enemy13" parent="." instance=ExtResource("4_qffyh")]
+position = Vector2(263, 75)
+
+[node name="Enemy14" parent="." instance=ExtResource("4_qffyh")]
+position = Vector2(275, 131)
+
+[node name="Enemy15" parent="." instance=ExtResource("4_qffyh")]
+position = Vector2(301, 171)
 
 [node name="Enemy2" parent="." instance=ExtResource("4_qffyh")]
 position = Vector2(235, 115)
@@ -28,7 +122,9 @@ position = Vector2(185, 139)
 [node name="Enemy5" parent="." instance=ExtResource("4_qffyh")]
 position = Vector2(255, 168)
 
-[node name="EnemyTesting" parent="." instance=ExtResource("3_dngg1")]
-position = Vector2(189, 94)
-
 [node name="Limits" parent="." instance=ExtResource("2_7jcr3")]
+
+[node name="Filtro" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vld3a")
+autoplay = "default"
+centered = false

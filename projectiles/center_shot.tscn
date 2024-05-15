@@ -1,43 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://ebjh0ecljxba"]
+[gd_scene load_steps=8 format=3 uid="uid://ebjh0ecljxba"]
 
 [ext_resource type="Texture2D" uid="uid://bp7mgn0g5a7io" path="res://assets/laser_small.png" id="1_6utlo"]
 [ext_resource type="Script" path="res://projectiles/center_shot.gd" id="1_t10eu"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="1_yr02y"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="3_hbs71"]
 [ext_resource type="Script" path="res://components/scale_component.gd" id="4_ttpa6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dj580"]
-size = Vector2(8, 4)
+size = Vector2(8, 3.1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn0dh"]
-size = Vector2(8.5, 4.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0rj30"]
+radius = 1.5
 
 [node name="Shot" type="Node2D"]
 script = ExtResource("1_t10eu")
 
 [node name="CenterShot" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+mass = 0.1
+can_sleep = false
 freeze = true
-angular_velocity = 17.4533
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterShot"]
-position = Vector2(-1, 0)
+position = Vector2(-2.08, 0)
 shape = SubResource("RectangleShape2D_dj580")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterShot"]
+position = Vector2(-1.1, 0)
 rotation = 1.5708
 texture = ExtResource("1_6utlo")
 
-[node name="ShotHit" type="Area2D" parent="CenterShot"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterShot/ShotHit"]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_cn0dh")
-
 [node name="Timer" type="Timer" parent="CenterShot"]
 
+[node name="HitboxComponent" type="Area2D" parent="CenterShot"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_hbs71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterShot/HitboxComponent"]
+rotation = -1.5708
+shape = SubResource("CircleShape2D_0rj30")
+
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CenterShot"]
-position = Vector2(-141, -1)
-scale = Vector2(15.5, 1.688)
+position = Vector2(-2.5, 0)
+scale = Vector2(0.45, 0.2)
 
 [node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_ttpa6")
@@ -49,6 +56,7 @@ scale_duration = 0.2
 script = ExtResource("1_yr02y")
 actor = NodePath("..")
 velocity = Vector2(450, 0)
+rotation = 30
 
-[connection signal="body_entered" from="CenterShot/ShotHit" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="CenterShot/HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
 [connection signal="screen_exited" from="CenterShot/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
