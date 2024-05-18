@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://62kymog0rxgs"]
+
+[ext_resource type="Script" path="res://scenes/enemyGen/greenbunch.gd" id="1_8rx20"]
+[ext_resource type="PackedScene" uid="uid://1db6npbnb4mr" path="res://enemies/Enemy1.tscn" id="1_e1o3b"]
+
+[node name="Enemies" type="Node2D"]
+script = ExtResource("1_8rx20")
+
+[node name="Enemy" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(136, 112)
+
+[node name="Enemy6" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(220, 205)
+
+[node name="Enemy7" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(220, 205)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(362, 117)
+
+[node name="Enemy9" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(341, 203)
+
+[node name="Enemy10" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(320, 129)
+
+[node name="Enemy11" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(198, 173)
+
+[node name="Enemy12" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(191, 89)
+
+[node name="Enemy13" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(263, 75)
+
+[node name="Enemy14" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(275, 131)
+
+[node name="Enemy15" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(301, 171)
+
+[node name="Enemy2" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(235, 115)
+
+[node name="Enemy3" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(137, 184)
+
+[node name="Enemy4" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(185, 139)
+
+[node name="Enemy5" parent="." instance=ExtResource("1_e1o3b")]
+position = Vector2(255, 168)

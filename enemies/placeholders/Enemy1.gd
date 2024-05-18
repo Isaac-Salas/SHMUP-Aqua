@@ -20,6 +20,7 @@ func _ready():
 		shake_component.tween_shake()
 		)
 	stats_component.no_health.connect(die)
+	hitbox_component.hit_hurtbox.connect(die.unbind(1))
 	
 	
 func die():

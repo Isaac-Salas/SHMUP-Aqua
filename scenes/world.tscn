@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://jryehanqehmw" path="res://player/player.tscn" id="1_nahrg"]
 [ext_resource type="PackedScene" uid="uid://cxdohwfvqd131" path="res://scenes/Limits.tscn" id="2_7jcr3"]
 [ext_resource type="PackedScene" uid="uid://cj3yvsqywbuq2" path="res://assets/bakckgrounds/background1.tscn" id="4_3pwnq"]
-[ext_resource type="PackedScene" uid="uid://1db6npbnb4mr" path="res://enemies/Enemy1.tscn" id="4_qffyh"]
+[ext_resource type="PackedScene" uid="uid://cmh3vs1g6u0wp" path="res://scenes/enemyGen/enemy_generator.tscn" id="5_52vd3"]
 [ext_resource type="Texture2D" uid="uid://dltyehf308ppj" path="res://assets/bakckgrounds/Backggroundfilter.png" id="5_d3iw4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dsmr5"]
@@ -74,51 +74,6 @@ animations = [{
 
 [node name="Background" parent="." instance=ExtResource("4_3pwnq")]
 
-[node name="Enemy" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(136, 112)
-
-[node name="Enemy6" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(220, 205)
-
-[node name="Enemy7" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(220, 205)
-
-[node name="Enemy8" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(362, 117)
-
-[node name="Enemy9" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(341, 203)
-
-[node name="Enemy10" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(320, 129)
-
-[node name="Enemy11" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(198, 173)
-
-[node name="Enemy12" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(191, 89)
-
-[node name="Enemy13" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(263, 75)
-
-[node name="Enemy14" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(275, 131)
-
-[node name="Enemy15" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(301, 171)
-
-[node name="Enemy2" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(235, 115)
-
-[node name="Enemy3" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(137, 184)
-
-[node name="Enemy4" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(185, 139)
-
-[node name="Enemy5" parent="." instance=ExtResource("4_qffyh")]
-position = Vector2(255, 168)
-
 [node name="Limits" parent="." instance=ExtResource("2_7jcr3")]
 
 [node name="Filtro" type="AnimatedSprite2D" parent="."]
@@ -128,3 +83,5 @@ centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_nahrg")]
 position = Vector2(82, 142)
+
+[node name="EnemyGenerator" parent="." instance=ExtResource("5_52vd3")]
