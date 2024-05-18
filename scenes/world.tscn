@@ -72,9 +72,6 @@ animations = [{
 
 [node name="World" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_nahrg")]
-position = Vector2(64, 128)
-
 [node name="Background" parent="." instance=ExtResource("4_3pwnq")]
 
 [node name="Enemy" parent="." instance=ExtResource("4_qffyh")]
@@ -128,3 +125,6 @@ position = Vector2(255, 168)
 sprite_frames = SubResource("SpriteFrames_vld3a")
 autoplay = "default"
 centered = false
+
+[node name="Player" parent="." instance=ExtResource("1_nahrg")]
+position = Vector2(82, 142)

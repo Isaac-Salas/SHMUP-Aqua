@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds30ohehc67w4"]
+
+[ext_resource type="Texture2D" uid="uid://r6qupnjsit1v" path="res://assets/player/Die.png" id="1_3uato"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn1ym"]
+
+[node name="PlayerDead" type="RigidBody2D"]
+angular_velocity = 1.74533
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jn1ym")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_3uato")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://jryehanqehmw"]
+[gd_scene load_steps=32 format=3 uid="uid://jryehanqehmw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_3bpno"]
 [ext_resource type="Texture2D" uid="uid://c4t1b68wphcp7" path="res://assets/player/Playerswim.png" id="1_8gb71"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="11_xkfeb"]
 [ext_resource type="Script" path="res://components/stats_component.gd" id="12_jo3wc"]
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="13_qe4hk"]
+[ext_resource type="Script" path="res://components/destroyed_component.gd" id="14_j5h4m"]
+[ext_resource type="PackedScene" uid="uid://ds30ohehc67w4" path="res://player/PlayerDEAD.tscn" id="15_hvfv1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhoj5"]
 atlas = ExtResource("1_8gb71")
@@ -144,9 +146,8 @@ radius = 5.0
 height = 22.0
 
 [node name="Player" type="RigidBody2D"]
-sleeping = true
+can_sleep = false
 freeze = true
-angular_velocity = 0.872665
 script = ExtResource("1_3bpno")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -205,3 +206,13 @@ script = ExtResource("13_qe4hk")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("CapsuleShape2D_w628k")
 debug_color = Color(0.992157, 0, 0.254902, 0.419608)
+
+[node name="DestroyedComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "stats_component", "destroy_effect_spawner_component")]
+script = ExtResource("14_j5h4m")
+actor = NodePath("..")
+stats_component = NodePath("../StatsComponent")
+destroy_effect_spawner_component = NodePath("../Deadplayer")
+
+[node name="Deadplayer" type="Node2D" parent="."]
+script = ExtResource("7_qmm00")
+scene = ExtResource("15_hvfv1")
