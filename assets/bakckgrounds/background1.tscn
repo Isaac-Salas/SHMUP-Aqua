@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cj3yvsqywbuq2"]
+[gd_scene load_steps=19 format=3 uid="uid://cj3yvsqywbuq2"]
 
 [ext_resource type="Texture2D" uid="uid://neny60uy13dj" path="res://assets/bakckgrounds/Backgground.png" id="1_10i6i"]
 [ext_resource type="Texture2D" uid="uid://c46yhsncr5mi3" path="res://assets/bakckgrounds/Sky.png" id="2_3reua"]
+[ext_resource type="Texture2D" uid="uid://lnb4k3agbe8w" path="res://assets/bakckgrounds/Pisomarino.png" id="3_lq2y7"]
 
 [sub_resource type="GDScript" id="GDScript_yyf65"]
 script/source = "extends ParallaxBackground
@@ -13,7 +14,7 @@ script/source = "extends ParallaxBackground
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#sea.motion_offset.x -= 20*delta
+	seafloor.motion_offset.x -= 300*delta
 	pass
 "
 
@@ -145,6 +146,16 @@ sprite_frames = SubResource("SpriteFrames_3t6ye")
 centered = false
 
 [node name="Seafloor" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(480, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Seafloor"]
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Seafloor/TextureRect"]
+texture = ExtResource("3_lq2y7")
+centered = false
 
 [node name="Frontbubbles" type="ParallaxLayer" parent="."]
 

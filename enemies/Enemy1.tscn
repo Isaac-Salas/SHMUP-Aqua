@@ -58,7 +58,7 @@ shape = SubResource("RectangleShape2D_b5pi3")
 health = 3
 
 [node name="MoveComponent" parent="EnemyTest" index="4"]
-velocity = Vector2(-10, 0)
+velocity = Vector2(-20, 0)
 active = true
 
 [node name="HurtboxComponent" parent="EnemyTest" index="8"]
