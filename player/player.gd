@@ -5,11 +5,14 @@ extends RigidBody2D
 @onready var scale_component = $ScaleComponent
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var move_component = $MoveComponent
+@onready var stats_component = $StatsComponent
+
 var change = "Center"
 var bubble = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	stats_component.no_health.connect(die)
 	#fire_rate_timer.timeout.connect(shoot)
 	pass # Replace with function body.
 
@@ -35,6 +38,14 @@ func _input(event):
 		change = "Center"
 		bubble = true
 		
+		
+		
+
+func die():
+	move_component.active = false
+	animated_sprite_2d.play("Die")
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

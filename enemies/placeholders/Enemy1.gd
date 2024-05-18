@@ -9,6 +9,7 @@ extends Node2D
 @onready var hurtbox_component = $EnemyTest/HurtboxComponent
 @onready var hitbox_component = $EnemyTest/HitboxComponent
 @onready var sprite = $EnemyTest/AnimatedSprite2D
+@onready var spawner_component = $SpawnerComponent
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +23,7 @@ func _ready():
 	
 	
 func die():
+	spawner_component.spawn()
 	hurtbox_component.queue_free()
 	hitbox_component.queue_free()
 	sprite.modulate = Color(0.5,0.5,0.5,0.5)

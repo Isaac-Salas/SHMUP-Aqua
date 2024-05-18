@@ -1,14 +1,18 @@
-[gd_scene load_steps=25 format=3 uid="uid://jryehanqehmw"]
+[gd_scene load_steps=30 format=3 uid="uid://jryehanqehmw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_3bpno"]
 [ext_resource type="Texture2D" uid="uid://c4t1b68wphcp7" path="res://assets/player/Playerswim.png" id="1_8gb71"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="2_pn1mw"]
+[ext_resource type="Texture2D" uid="uid://r6qupnjsit1v" path="res://assets/player/Die.png" id="3_jjdpj"]
 [ext_resource type="Script" path="res://components/move_input_componet.gd" id="3_p5ddr"]
 [ext_resource type="Resource" uid="uid://dl5lvl8t423pb" path="res://player/Player_move_stats.tres" id="4_hx36n"]
 [ext_resource type="Script" path="res://components/position_clamp_component.gd" id="5_p2h6a"]
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="7_qmm00"]
 [ext_resource type="PackedScene" uid="uid://ebjh0ecljxba" path="res://projectiles/center_shot.tscn" id="8_x50b0"]
 [ext_resource type="Script" path="res://components/scale_component.gd" id="9_1nybb"]
+[ext_resource type="Script" path="res://components/hurt_component.gd" id="11_xkfeb"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="12_jo3wc"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="13_qe4hk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhoj5"]
 atlas = ExtResource("1_8gb71")
@@ -95,6 +99,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_jjdpj")
+}],
+"loop": true,
+"name": &"Die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_0irhk")
 }, {
 "duration": 1.0,
@@ -127,6 +139,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0s0cm"]
 size = Vector2(32, 32)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w628k"]
+radius = 5.0
+height = 22.0
+
 [node name="Player" type="RigidBody2D"]
 sleeping = true
 freeze = true
@@ -135,7 +151,7 @@ script = ExtResource("1_3bpno")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mndd0")
-animation = &"Right_Left"
+animation = &"Die"
 autoplay = "Center"
 
 [node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
@@ -172,3 +188,20 @@ script = ExtResource("9_1nybb")
 sprite = NodePath("../AnimatedSprite2D")
 scale_amount = Vector2(1.2, 1.2)
 scale_duration = 0.2
+
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("11_xkfeb")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("12_jo3wc")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("13_qe4hk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CapsuleShape2D_w628k")
+debug_color = Color(0.992157, 0, 0.254902, 0.419608)
