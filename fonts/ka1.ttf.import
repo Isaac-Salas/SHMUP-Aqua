@@ -2,7 +2,7 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://o8h3ht2nrp4k"
+uid="uid://xqyel50d34il"
 path="res://.godot/imported/ka1.ttf-279588e16c82672f25e0673d2d4d61b3.fontdata"
 
 [deps]
@@ -14,15 +14,15 @@ dest_files=["res://.godot/imported/ka1.ttf-279588e16c82672f25e0673d2d4d61b3.font
 
 Rendering=null
 antialiasing=0
-generate_mipmaps=true
+generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
-msdf_size=47
-allow_system_fallback=true
+msdf_size=48
+allow_system_fallback=false
 force_autohinter=false
 hinting=0
-subpixel_positioning=3
-oversampling=1.0
+subpixel_positioning=0
+oversampling=0.0
 Fallbacks=null
 fallbacks=[]
 Compress=null

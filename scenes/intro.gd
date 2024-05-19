@@ -1,5 +1,5 @@
 extends Node2D
-
+@onready var barquito = $Barcote/Barquito
 @onready var animation_player = $AnimationPlayer
 @onready var canstart = false
 @onready var timer = $Timer
@@ -25,6 +25,7 @@ extends Node2D
 @onready var animation_player_2 = $Objetillos/B/Piece/AnimationPlayer2
 @onready var camera_2d = $Camera2D
 @onready var player_swim = $PlayerSwim
+@onready var press_shoot = $"Objetillos/Press-Shoot"
 
 @onready var timer_p = $TimerP
 @export var done = false
@@ -46,8 +47,9 @@ func _input(event):
 				
 				prota.animation_finished.connect(switching)
 				animation_player.play("Shrink")
-				await prota.animation_looped
+				#await prota.animation_looped
 				label.queue_free()
+				await barquito.animation_looped
 				prota.play("new_animation")
 				globo.visible = true
 				globo.play("Dialogo")
@@ -74,6 +76,7 @@ func _input(event):
 			
 
 func switching():
+	prota.animation_finished.disconnect(switching)
 	prota.animation_finished.connect(animate)
 	prota.offset.x = 20
 	prota.offset.y = -12
@@ -90,7 +93,7 @@ func switching():
 	prota.play(animation)
 	await prota.animation_finished
 	prota.queue_free()
-	prota.animation_finished.disconnect(switching)
+	#prota.animation_finished.disconnect(switching)
 	
 	
 	
@@ -118,6 +121,7 @@ func _on_area_2d_body_entered(body):
 		piece.angular_velocity= 50
 		animation_player_2.play("Dissapear")
 		await animation_player_2.animation_finished
+		press_shoot.set_deferred("freeze", false)
 		done = true
 		piece.queue_free()
 

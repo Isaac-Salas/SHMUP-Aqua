@@ -10,20 +10,30 @@ config_version=5
 
 [application]
 
-config/name="SHMUP-AQUA"
+config/name="SHMUPAQUA"
 run/main_scene="res://scenes/intro.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
+
+[audio]
+
+driver/mix_rate.web=44100
+
+[debug]
+
+gdscript/warnings/onready_with_export=0
 
 [display]
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/mode=4
-window/size/borderless=true
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [input]
 
@@ -86,3 +96,4 @@ ui_eat={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

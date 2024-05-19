@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name PlayerComponent
 @onready var spawner_component = $SpawnerComponent
 @onready var centershot = $Centershot
 @onready var fire_rate_timer = $FireRateTimer
@@ -10,7 +11,7 @@ extends RigidBody2D
 @onready var hurtbox_component = $HurtboxComponent
 @onready var shake_component = $ShakeComponent
 @onready var cntshot = load("res://projectiles/center_shot.tscn")
-var ammo = 0
+@export var ammo = 0
 
 var change = "Center"
 var bubble = false
@@ -33,7 +34,7 @@ func _process(_delta):
 	shooting = Input.is_action_just_pressed("ui_shoot")
 	eating = Input.is_action_just_pressed("ui_eat")
 	punching = Input.is_action_just_pressed("ui_punch")
-	print(shooting)
+	#print(shooting)
 
 
 
@@ -97,8 +98,7 @@ func animation():
 	animated_sprite_2d.play(change)
 
 func shoot():
+	spawner_component.scene = cntshot
 	spawner_component.spawn(centershot.global_position)
 	scale_component.tween_scale()
-func ass():
-	print("SELOGROOOO")
 

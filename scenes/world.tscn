@@ -1,13 +1,14 @@
-[gd_scene load_steps=27 format=3 uid="uid://l20746qikf75"]
+[gd_scene load_steps=28 format=3 uid="uid://l20746qikf75"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_fx04m"]
 [ext_resource type="PackedScene" uid="uid://jryehanqehmw" path="res://player/player.tscn" id="1_nahrg"]
 [ext_resource type="PackedScene" uid="uid://cxdohwfvqd131" path="res://scenes/Limits.tscn" id="2_7jcr3"]
 [ext_resource type="PackedScene" uid="uid://cj3yvsqywbuq2" path="res://assets/bakckgrounds/background1.tscn" id="4_3pwnq"]
 [ext_resource type="PackedScene" uid="uid://cmh3vs1g6u0wp" path="res://scenes/enemyGen/enemy_generator.tscn" id="5_52vd3"]
-[ext_resource type="Texture2D" uid="uid://dltyehf308ppj" path="res://assets/bakckgrounds/Backggroundfilter.png" id="5_d3iw4"]
-[ext_resource type="Texture2D" uid="uid://b0k8kdblso6ph" path="res://assets/barquito.png" id="6_sshj1"]
+[ext_resource type="Texture2D" uid="uid://bppbqbh1nmf2x" path="res://assets/bakckgrounds/Backggroundfilter.png" id="5_d3iw4"]
+[ext_resource type="Texture2D" uid="uid://c5bjuo2wgy5k7" path="res://assets/barquito.png" id="6_sshj1"]
 [ext_resource type="PackedScene" uid="uid://c1bp32chdhsm7" path="res://scenes/Menu/Menu.tscn" id="8_pji3j"]
+[ext_resource type="PackedScene" uid="uid://bcnu8emceioc1" path="res://scenes/UI/ui.tscn" id="9_ebjyf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dsmr5"]
 atlas = ExtResource("5_d3iw4")
@@ -153,6 +154,7 @@ centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_nahrg")]
 position = Vector2(64, 135)
+ammo = 1000
 
 [node name="EnemyGenerator" parent="." instance=ExtResource("5_52vd3")]
 
@@ -162,8 +164,18 @@ position = Vector2(69, -8)
 sprite_frames = SubResource("SpriteFrames_avxo8")
 autoplay = "default"
 
-[node name="Control" parent="." instance=ExtResource("8_pji3j")]
-offset_left = 480.0
-offset_top = 125.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 480.0
-offset_bottom = 125.0
+offset_bottom = 270.0
+
+[node name="Control" parent="Control" node_paths=PackedStringArray("Player", "world") instance=ExtResource("8_pji3j")]
+layout_mode = 1
+Player = NodePath("../../Player")
+world = NodePath("../..")
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[node name="UI" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("9_ebjyf")]
+Player = NodePath("../Player")
