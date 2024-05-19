@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cj3yvsqywbuq2"]
+[gd_scene load_steps=20 format=3 uid="uid://cj3yvsqywbuq2"]
 
 [ext_resource type="Texture2D" uid="uid://neny60uy13dj" path="res://assets/bakckgrounds/Backgground.png" id="1_10i6i"]
 [ext_resource type="Texture2D" uid="uid://c46yhsncr5mi3" path="res://assets/bakckgrounds/Sky.png" id="2_3reua"]
 [ext_resource type="Texture2D" uid="uid://lnb4k3agbe8w" path="res://assets/bakckgrounds/Pisomarino.png" id="3_lq2y7"]
+[ext_resource type="Texture2D" uid="uid://cbfn0cip0qeua" path="res://assets/bakckgrounds/Burbujitas.png" id="4_60bes"]
 
 [sub_resource type="GDScript" id="GDScript_yyf65"]
 script/source = "extends ParallaxBackground
@@ -15,6 +16,7 @@ script/source = "extends ParallaxBackground
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	seafloor.motion_offset.x -= 300*delta
+	frontbubbles.motion_offset.x -= 100*delta
 	pass
 "
 
@@ -143,7 +145,16 @@ offset_bottom = 40.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sea/TextureRect2"]
 sprite_frames = SubResource("SpriteFrames_3t6ye")
+frame = 2
+frame_progress = 0.0446088
 centered = false
+
+[node name="Spinny" type="ParallaxLayer" parent="."]
+show_behind_parent = true
+
+[node name="TextureRect" type="TextureRect" parent="Spinny"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Seafloor" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(480, 0)
@@ -158,5 +169,18 @@ texture = ExtResource("3_lq2y7")
 centered = false
 
 [node name="Frontbubbles" type="ParallaxLayer" parent="."]
+light_mask = 2
+visibility_layer = 2
+z_index = 1
+motion_mirroring = Vector2(480, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Frontbubbles"]
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Frontbubbles/TextureRect"]
+texture = ExtResource("4_60bes")
+centered = false
 
 [node name="Sky" type="ParallaxLayer" parent="."]

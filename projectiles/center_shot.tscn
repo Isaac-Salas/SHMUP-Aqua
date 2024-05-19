@@ -27,6 +27,7 @@ position = Vector2(-2.08, 0)
 shape = SubResource("RectangleShape2D_dj580")
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterShot"]
+z_index = -1
 position = Vector2(-1.1, 0)
 rotation = 1.5708
 texture = ExtResource("1_6utlo")

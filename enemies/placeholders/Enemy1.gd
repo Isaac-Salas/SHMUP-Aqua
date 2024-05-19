@@ -15,7 +15,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible_on_screen_notifier_2d.screen_exited.connect(queue_free)
-	hurtbox_component.hurt.connect(func(Hitbox : HitboxComponent):
+	hurtbox_component.hurt.connect(func(_Hitbox : HitboxComponent):
 		scale_component.tween_scale()
 		shake_component.tween_shake()
 		)

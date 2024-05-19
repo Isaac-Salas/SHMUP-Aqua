@@ -8,15 +8,15 @@ var margin = 8
 var screeen_width = ProjectSettings.get_setting("display/window/size/viewport_width")
 
 @onready var spawner_component = $SpawnerComponent
-@onready var green_enemy_timer = $GreenEnemyTimer
+@onready var starttimer = $GreenEnemyTimer
 
 
 
 func _ready():
-	green_enemy_timer.timeout.connect(handle_spawn.bind(Waves[counter], green_enemy_timer))
+	starttimer.timeout.connect(handle_spawn.bind(Waves[counter], starttimer))
 	
 
-func handle_spawn(enemy_scene: PackedScene, timer):
+func handle_spawn(enemy_scene: PackedScene, _timer):
 	
 	spawner_component.scene = enemy_scene
 	testing = spawner_component.spawn(Vector2(screeen_width, -16))
@@ -26,12 +26,12 @@ func handle_spawn(enemy_scene: PackedScene, timer):
 	#timer.start()
 	
 func next_wave ():
-	green_enemy_timer.timeout.disconnect(handle_spawn.bind(Waves[counter], green_enemy_timer))
+	starttimer.timeout.disconnect(handle_spawn.bind(Waves[counter], starttimer))
 	if counter < (len(Waves)-1):
 		counter += 1
 	else:
 		print("OUTOFWAVES")
 	print(counter)
-	green_enemy_timer.timeout.connect(handle_spawn.bind(Waves[counter], green_enemy_timer))
-	green_enemy_timer.start()
+	starttimer.timeout.connect(handle_spawn.bind(Waves[counter], starttimer))
+	starttimer.start()
 	print("Waveended")

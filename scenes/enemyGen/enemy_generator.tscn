@@ -14,4 +14,3 @@ script = ExtResource("2_bpowj")
 
 [node name="GreenEnemyTimer" type="Timer" parent="."]
 one_shot = true
-autostart = true

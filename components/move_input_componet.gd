@@ -5,7 +5,7 @@ extends Node
 @export var move_component : MoveComponent
 @export var active = true
 
-func _input(event):
+func _input(_event):
 	
 	match active:
 		true:

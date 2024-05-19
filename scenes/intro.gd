@@ -23,10 +23,13 @@ extends Node2D
 @onready var broto = $Objetillos/B/Piece/Broto
 @onready var piece = $Objetillos/B/Piece
 @onready var animation_player_2 = $Objetillos/B/Piece/AnimationPlayer2
+@onready var camera_2d = $Camera2D
+@onready var player_swim = $PlayerSwim
 
 @onready var timer_p = $TimerP
 @export var done = false
 
+var img 
 
 func _on_timer_timeout():
 	animation_player.play("AppearText")
@@ -52,7 +55,22 @@ func _input(event):
 				canstart = false
 				
 	if Input.is_action_just_pressed("ui_shoot") and done == true:
+		#img = get_viewport().get_texture().get_image()
+		#img.save_png("res://assets/screenshots/fondo.png")
+		#img.save_png_to_buffer()
+		
+		animation_player.play("CameraPull")
+		move_component.active = false
+		done = false
+		canstart = false
+		await animation_player.animation_finished
+		player_swim.visible = true
+		animation_player.play("CameraPull_2")
+		player_swim.play("default")
+		await animation_player.animation_finished
 		get_tree().change_scene_to_file("res://scenes/world.tscn")
+		#await img.save_png("res://assets/screenshots/fondo.png")
+		#
 			
 
 func switching():
@@ -88,9 +106,9 @@ func animate():
 func _on_area_2d_body_entered(body):
 	if body.name ==  "M":
 		move_component.active = true
-		s.lock_rotation = false
-		u.lock_rotation = false
-		b.lock_rotation = false
+		#s.lock_rotation = false
+		#u.lock_rotation = false
+		#b.lock_rotation = false
 		timer_p.start(3)
 		await timer_p.timeout
 		bplayer.play("P")
