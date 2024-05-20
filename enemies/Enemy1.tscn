@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://1db6npbnb4mr"]
+[gd_scene load_steps=17 format=3 uid="uid://1db6npbnb4mr"]
 
 [ext_resource type="PackedScene" uid="uid://kbl5vm53q020" path="res://enemies/EnemyTemp.tscn" id="1_awjix"]
-[ext_resource type="Texture2D" uid="uid://dtljmor158gxp" path="res://assets/Enemies/Clownfish.png" id="2_rlv7i"]
-[ext_resource type="PackedScene" uid="uid://bl3x7itj3wt6j" path="res://projectiles/Anti-player/SingleSushi.tscn" id="3_d0287"]
+[ext_resource type="Texture2D" uid="uid://c0qvkct4ws38t" path="res://assets/Enemies/Clownfish.png" id="2_rlv7i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvfbo"]
 atlas = ExtResource("2_rlv7i")
@@ -131,9 +130,6 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTest/HitboxComponent" index="0"]
 shape = SubResource("CircleShape2D_o1ov6")
 debug_color = Color(0.972549, 0, 0, 0.419608)
-
-[node name="ShootSpawn" parent="EnemyTest/Shooter" index="0"]
-scene = ExtResource("3_d0287")
 
 [node name="Timer" parent="EnemyTest/Shooter" index="1"]
 autostart = true
