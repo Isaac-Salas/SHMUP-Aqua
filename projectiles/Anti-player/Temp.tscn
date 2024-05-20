@@ -83,7 +83,7 @@ scale_duration = 0.2
 script = ExtResource("5_wnjdi")
 actor = NodePath("..")
 velocity = Vector2(-200, 1)
-rotation = 20
+rotation = 5
 
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("6_kq0o3")

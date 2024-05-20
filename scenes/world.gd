@@ -13,6 +13,7 @@ extends Node2D
 @onready var menumode = true
 @onready var creditrigger = $Creditos/Creditrigger
 @onready var creditos = $Creditos
+@onready var ui = $UI
 
 
 
@@ -50,6 +51,7 @@ func toggle():
 			true:
 				match menumode:
 					true:
+						ui.visible = true
 						player.o2down()
 						menumode = false
 						creditos.queue_free()

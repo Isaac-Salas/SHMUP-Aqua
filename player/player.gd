@@ -14,11 +14,12 @@ class_name PlayerComponent
 @onready var shake_component = $ShakeComponent
 @onready var cntshot = load("res://projectiles/center_shot.tscn")
 @onready var o_2_timer = $O2Timer
+@onready var o_2_sum = $O2Sum
 
-@export var ammo = 0
+@export var ammo = 1000
 @export var O2 = 100
 # Single, Shotty, or Laser
-@onready var currentgun = ""
+@onready var currentgun = "Shotty"
 @onready var nextgun = ""
 
 var change = "Center"
@@ -33,8 +34,10 @@ var somethingeat
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	fire_rate_timer.timeout.connect(laserdown)
 	o_2_timer.timeout.connect(o2down)
+	o_2_sum.timeout.connect(sumao2)
 	hurtbox_component.hurt.connect(func(Hitbox : HitboxComponent):
 		scale_component.tween_scale()
 		shake_component.tween_shake()
@@ -46,19 +49,21 @@ func o2down():
 		o_2_timer.start()
 	else:
 		o_2_timer.start(1)
-		stats_component -= 1
+		stats_component.health -= 1
 
 func _process(_delta):
 	
-	#print(stopshooting)
-	animation()
-	evaluate()
 	stopshooting = Input.is_action_just_released("ui_shoot")
 	shooting = Input.is_action_just_pressed("ui_shoot")
 	eating = Input.is_action_just_pressed("ui_eat")
 	punching = Input.is_action_just_pressed("ui_punch")
-	#print(ammo)
+	#print(stopshooting)
+	animation()
+	evaluate()
 
+	#print(ammo)
+func animation():
+	animated_sprite_2d.play(change)
 	
 	#print(shooting)
 
@@ -129,7 +134,6 @@ func evaluate():
 						spawner_component.spawn(centershot.global_position)
 						var lower = spawner_component.spawn(lowershot.global_position)
 						lower.get_node("MoveComponent").velocity.y = 50
-						shooting = false
 					"Laser":
 						shootholding = true
 						spawner_component.scene = load("res://projectiles/Laser.tscn")
@@ -169,7 +173,7 @@ func evaluate():
 			scale_component.tween_scale()
 		false:
 			pass
-	0
+			
 	match punching:
 		true:
 			animated_sprite_2d.flip_h = false
@@ -182,8 +186,7 @@ func laserdown():
 	else:
 		pass
 
-func animation():
-	animated_sprite_2d.play(change)
+
 #
 #func shoot():
 	#spawner_component.spawn(centershot.global_position)
@@ -200,3 +203,16 @@ func _on_eat_area_entered(area):
 		nextgun = "Shotty"
 	elif  area.get_parent().get_parent().find_child("Laser"):
 		nextgun = "Shotty"
+
+
+func _on_air_area_entered(area):
+	o_2_timer.stop()
+	o_2_sum.start(0.1)
+
+func sumao2 ():
+	if O2 < 100:
+		O2 += 1
+
+func _on_air_area_exited(area):
+	o_2_sum.stop()
+	o_2_timer.start()

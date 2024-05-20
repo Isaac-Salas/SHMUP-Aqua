@@ -285,4 +285,9 @@ shape = SubResource("RectangleShape2D_6qe2e")
 [node name="O2Timer" type="Timer" parent="."]
 wait_time = 0.25
 
+[node name="O2Sum" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="area_entered" from="Eat" to="." method="_on_eat_area_entered"]
+[connection signal="area_entered" from="Air" to="." method="_on_air_area_entered"]
+[connection signal="area_exited" from="Air" to="." method="_on_air_area_exited"]

@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://c1bp32chdhsm7" path="res://scenes/Menu/Menu.tscn" id="8_pji3j"]
 [ext_resource type="PackedScene" uid="uid://bcnu8emceioc1" path="res://scenes/UI/ui.tscn" id="9_ebjyf"]
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="10_vvanu"]
-[ext_resource type="PackedScene" uid="uid://buk070ofgsa3y" path="res://projectiles/Anti-player/Temp.tscn" id="11_hcxsx"]
 [ext_resource type="Texture2D" uid="uid://8sdnjjmvmyme" path="res://scenes/Credits/Credits.png" id="12_7nkdb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dsmr5"]
@@ -247,6 +246,9 @@ _data = {
 "RESET": SubResource("Animation_g4fle")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1enq"]
+size = Vector2(560, 53)
+
 [node name="World" type="Node2D" node_paths=PackedStringArray("EnemyGen")]
 script = ExtResource("1_fx04m")
 EnemyGen = NodePath("EnemyGenerator")
@@ -287,6 +289,7 @@ world = NodePath("../..")
 [node name="StartTimer" type="Timer" parent="."]
 
 [node name="UI" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("9_ebjyf")]
+visible = false
 Player = NodePath("../Player")
 
 [node name="SpawnerComponent" type="Node2D" parent="."]
@@ -306,9 +309,6 @@ bus = &"Musica"
 
 [node name="Secondfader" type="AnimationPlayer" parent="Ingame"]
 
-[node name="Shot" parent="." instance=ExtResource("11_hcxsx")]
-position = Vector2(426, 133)
-
 [node name="Creditos" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(60, 280)
@@ -320,3 +320,12 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_yi5lf")
 }
+
+[node name="AirFill" type="Area2D" parent="."]
+position = Vector2(240, 0)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AirFill"]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_a1enq")

@@ -33,3 +33,25 @@ theme_override_fonts/font = ExtResource("2_sn4ds")
 theme_override_font_sizes/font_size = 14
 text = " O2: 
 "
+
+[node name="Ammo" type="Label" parent="."]
+layout_mode = 0
+offset_top = 101.0
+offset_right = 75.0
+offset_bottom = 124.0
+theme_override_colors/font_color = Color(0.847059, 0.596078, 0.47451, 1)
+theme_override_fonts/font = ExtResource("2_sn4ds")
+theme_override_font_sizes/font_size = 14
+text = " Am:
+"
+
+[node name="Gun" type="Label" parent="."]
+layout_mode = 0
+offset_top = 126.0
+offset_right = 75.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0.211765, 0.156863, 0.27451, 1)
+theme_override_fonts/font = ExtResource("2_sn4ds")
+theme_override_font_sizes/font_size = 14
+text = " Gun:
+"
