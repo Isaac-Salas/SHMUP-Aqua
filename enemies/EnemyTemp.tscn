@@ -58,6 +58,15 @@ script = ExtResource("9_djjv2")
 stats_component = NodePath("../StatsComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
 
+[node name="Shooter" type="Marker2D" parent="EnemyTest"]
+position = Vector2(-13, 0)
+
+[node name="ShootSpawn" type="Node2D" parent="EnemyTest/Shooter"]
+position = Vector2(13, 0)
+script = ExtResource("10_oyj3s")
+
+[node name="Timer" type="Timer" parent="EnemyTest/Shooter"]
+
 [node name="SpawnerComponent" type="Node2D" parent="."]
 script = ExtResource("10_oyj3s")
 scene = ExtResource("11_ptvmc")

@@ -3,7 +3,7 @@ class_name EnemyWave
 var Ecount = 0
 signal waveend()
 @onready var emitonce = true
-
+var new
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in self.get_children ():
@@ -24,3 +24,10 @@ func _process(_delta):
 		
 	
 	
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	print("IMin")
+	for i in self.get_children():
+		i.Shooting = true
+		i.find_child("EnemyTest").find_child("MoveComponent").active = false

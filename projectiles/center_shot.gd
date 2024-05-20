@@ -2,7 +2,7 @@ extends Node2D
 @onready var center_shot = $CenterShot
 @onready var timer = $CenterShot/Timer
 @onready var sprite_2d = $CenterShot/Sprite2D
-
+@export var collidable = true
 @onready var scale_component = $ScaleComponent
 @onready var collision_shape_2d = $CenterShot/CollisionShape2D
 @onready var move_component = $MoveComponent
@@ -12,6 +12,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scale_component.tween_scale()
+	
 
 
 
@@ -36,6 +37,12 @@ func destroy():
 
 
 func _on_hitbox_component_body_entered(body):
+	if collidable == true:
+		pass
+	else:
+		center_shot.collision_layer = 0
+		center_shot.collision_mask = 0
+	
 	print(body.name)
 	if body.find_child("Hitable"):
 		hitbox_component.queue_free()

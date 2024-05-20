@@ -10,7 +10,11 @@ extends Node2D
 @onready var hitbox_component = $EnemyTest/HitboxComponent
 @onready var sprite = $EnemyTest/AnimatedSprite2D
 @onready var spawner_component = $SpawnerComponent
-
+@onready var timer = $EnemyTest/Shooter/Timer
+@onready var shoot_spawn = $EnemyTest/Shooter/ShootSpawn
+@onready var shooter = $EnemyTest/Shooter
+@onready var animated_sprite_2d = $EnemyTest/AnimatedSprite2D
+@export var Shooting = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,9 +23,24 @@ func _ready():
 		scale_component.tween_scale()
 		shake_component.tween_shake()
 		)
+	animated_sprite_2d.animation_finished.connect(returntoidle)
 	stats_component.no_health.connect(die)
 	hitbox_component.hit_hurtbox.connect(die.unbind(1))
+	timer.timeout.connect(shoot)
 	
+
+	
+func returntoidle():
+	animated_sprite_2d.play("Idle")
+	
+func shoot():
+	timer.start(randf_range(1,15))
+	match Shooting:
+		true:
+			animated_sprite_2d.play("Shoot")
+			shoot_spawn.spawn(shooter.global_position)
+		false:
+			pass
 	
 func die():
 	spawner_component.spawn()

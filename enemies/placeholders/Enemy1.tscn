@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://enemies/placeholders/Enemy_component_test.gd" id="1_7pqdp"]
 [ext_resource type="Script" path="res://enemies/placeholders/Enemy1.gd" id="1_h6ehg"]
-[ext_resource type="Texture2D" uid="uid://du6lwkhf0tgkd" path="res://assets/green_enemy.png" id="1_xse4f"]
+[ext_resource type="Texture2D" uid="uid://lbsrnlr5i7qw" path="res://assets/green_enemy.png" id="1_xse4f"]
 [ext_resource type="Script" path="res://components/stats_component.gd" id="2_wba58"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="5_oaug6"]
 [ext_resource type="Script" path="res://components/scale_component.gd" id="6_dq2o5"]

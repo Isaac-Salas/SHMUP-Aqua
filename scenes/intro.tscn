@@ -1,4 +1,4 @@
-[gd_scene load_steps=485 format=3 uid="uid://sxxbbkame3i3"]
+[gd_scene load_steps=489 format=3 uid="uid://sxxbbkame3i3"]
 
 [ext_resource type="Texture2D" uid="uid://cdfmrs702j1qy" path="res://assets/intro/Intro1.png" id="1_4mybs"]
 [ext_resource type="Script" path="res://scenes/intro.gd" id="1_hupxm"]
@@ -2642,6 +2642,43 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_8neo3"]
+
+[sub_resource type="Animation" id="Animation_03d2p"]
+resource_name = "Fadeout"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -80, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="Animation" id="Animation_h5x3s"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dp11m"]
+_data = {
+"Fadeout": SubResource("Animation_03d2p"),
+"RESET": SubResource("Animation_h5x3s")
+}
+
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_hupxm")
 
@@ -3026,6 +3063,15 @@ centered = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(240, 135)
+
+[node name="IntroMusic" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamMP3_8neo3")
+bus = &"Musica"
+
+[node name="Fader" type="AnimationPlayer" parent="IntroMusic"]
+libraries = {
+"": SubResource("AnimationLibrary_dp11m")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Objetillos/Aqua/Area2D" to="." method="_on_area_2d_body_entered"]

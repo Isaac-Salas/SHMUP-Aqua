@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://jryehanqehmw"]
+[gd_scene load_steps=38 format=3 uid="uid://jryehanqehmw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_3bpno"]
 [ext_resource type="Texture2D" uid="uid://bpxcq2c3w1q6d" path="res://assets/player/Playerswim.png" id="1_8gb71"]
@@ -172,6 +172,9 @@ size = Vector2(32, 32)
 radius = 5.0
 height = 22.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2eib"]
+radius = 50.0
+
 [node name="Player" type="RigidBody2D"]
 can_sleep = false
 freeze = true
@@ -203,15 +206,21 @@ actor = NodePath("..")
 marginx = 48
 marginy = 48
 
+[node name="Uppershot" type="Marker2D" parent="."]
+position = Vector2(18, -8)
+
 [node name="Centershot" type="Marker2D" parent="."]
 position = Vector2(18, 0)
+
+[node name="Lowershot" type="Marker2D" parent="."]
+position = Vector2(18, 7)
 
 [node name="SpawnerComponent" type="Node2D" parent="."]
 script = ExtResource("7_qmm00")
 scene = ExtResource("8_x50b0")
 
 [node name="FireRateTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.05
 autostart = true
 
 [node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
@@ -230,8 +239,7 @@ script = ExtResource("12_jo3wc")
 health = 6
 
 [node name="HurtboxComponent" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_mask = 0
 script = ExtResource("13_qe4hk")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -252,3 +260,14 @@ scene = ExtResource("15_hvfv1")
 script = ExtResource("16_di1e1")
 node = NodePath("../AnimatedSprite2D")
 shake_amount = 10.0
+
+[node name="Hitable" type="Node" parent="."]
+
+[node name="Eat" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eat"]
+shape = SubResource("CircleShape2D_h2eib")
+debug_color = Color(0, 0.643137, 0.337255, 0.0823529)
+
+[connection signal="area_entered" from="Eat" to="." method="_on_eat_area_entered"]

@@ -1,16 +1,17 @@
 [gd_scene load_steps=8 format=3 uid="uid://ebjh0ecljxba"]
 
-[ext_resource type="Texture2D" uid="uid://bp7mgn0g5a7io" path="res://assets/laser_small.png" id="1_6utlo"]
 [ext_resource type="Script" path="res://projectiles/center_shot.gd" id="1_t10eu"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="1_yr02y"]
+[ext_resource type="Texture2D" uid="uid://eb6jrwgi6wu7" path="res://assets/Projectile/Fishbone.png" id="2_15xqq"]
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="3_hbs71"]
 [ext_resource type="Script" path="res://components/scale_component.gd" id="4_ttpa6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dj580"]
-size = Vector2(8, 3.1)
+size = Vector2(8, 5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0rj30"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lyvd5"]
 radius = 1.5
+height = 7.8
 
 [node name="Shot" type="Node2D"]
 script = ExtResource("1_t10eu")
@@ -23,14 +24,11 @@ can_sleep = false
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterShot"]
-position = Vector2(-2.08, 0)
 shape = SubResource("RectangleShape2D_dj580")
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterShot"]
 z_index = -1
-position = Vector2(-1.1, 0)
-rotation = 1.5708
-texture = ExtResource("1_6utlo")
+texture = ExtResource("2_15xqq")
 
 [node name="Timer" type="Timer" parent="CenterShot"]
 
@@ -41,11 +39,9 @@ script = ExtResource("3_hbs71")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterShot/HitboxComponent"]
 rotation = -1.5708
-shape = SubResource("CircleShape2D_0rj30")
+shape = SubResource("CapsuleShape2D_lyvd5")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CenterShot"]
-position = Vector2(-2.5, 0)
-scale = Vector2(0.45, 0.2)
 
 [node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_ttpa6")
@@ -58,6 +54,8 @@ script = ExtResource("1_yr02y")
 actor = NodePath("..")
 velocity = Vector2(450, 0)
 rotation = 30
+
+[node name="Single" type="Node" parent="."]
 
 [connection signal="body_entered" from="CenterShot/HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
 [connection signal="screen_exited" from="CenterShot/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
