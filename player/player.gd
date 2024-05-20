@@ -13,9 +13,13 @@ class_name PlayerComponent
 @onready var hurtbox_component = $HurtboxComponent
 @onready var shake_component = $ShakeComponent
 @onready var cntshot = load("res://projectiles/center_shot.tscn")
+@onready var o_2_timer = $O2Timer
+
 @export var ammo = 0
+@export var O2 = 100
 # Single, Shotty, or Laser
-@onready var currentgun = "Single"
+@onready var currentgun = ""
+@onready var nextgun = ""
 
 var change = "Center"
 var bubble = false
@@ -30,13 +34,22 @@ var somethingeat
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	fire_rate_timer.timeout.connect(laserdown)
+	o_2_timer.timeout.connect(o2down)
 	hurtbox_component.hurt.connect(func(Hitbox : HitboxComponent):
 		scale_component.tween_scale()
 		shake_component.tween_shake()
 		)
 
+func o2down():
+	if O2 > 0:
+		O2 -= 1
+		o_2_timer.start()
+	else:
+		o_2_timer.start(1)
+		stats_component -= 1
 
 func _process(_delta):
+	
 	#print(stopshooting)
 	animation()
 	evaluate()
@@ -52,6 +65,7 @@ func _process(_delta):
 
 
 func _input(_event):
+	
 	if Input.is_anything_pressed():
 		if Input.is_action_pressed("ui_left"):
 			animated_sprite_2d.flip_h = true
@@ -81,6 +95,9 @@ func _input(_event):
 
 
 func evaluate():
+	match ammo:
+		0:
+			currentgun = ""
 	
 	if ammo == 0 and currentgun == "Laser" and laser != null:
 		laser.queue_free()
@@ -118,7 +135,8 @@ func evaluate():
 						spawner_component.scene = load("res://projectiles/Laser.tscn")
 						laser = spawner_component.spawn(centershot.global_position)
 						#laser.get_node("MoveComponent").velocity = Vector2(0,0)
-						
+					"":
+						pass
 
 			else:
 				scale_component.tween_scale()
@@ -127,6 +145,25 @@ func evaluate():
 		true:
 			if somethingeat != null:
 				somethingeat.get_node("StatsComponent").health = 0
+				somethingeat = null
+				match nextgun:
+					"Single":
+						if currentgun == nextgun:
+							ammo += 3
+						else:
+							ammo = 3 
+					"Shotty":
+						if currentgun == nextgun:
+							ammo += 1
+						else:
+							ammo = 1 
+					"Laser":
+						if currentgun == nextgun:
+							ammo += 100
+						else:
+							ammo = 100
+				currentgun = nextgun
+				
 			animated_sprite_2d.flip_h = false
 			change = "Eat"
 			scale_component.tween_scale()
@@ -157,4 +194,9 @@ func animation():
 func _on_eat_area_entered(area):
 	if area.get_parent().get_parent().find_child("Single"):
 		somethingeat = area.get_parent().get_parent()
-	
+		nextgun = "Single"
+	elif area.get_parent().get_parent().find_child("Shotty"):
+		somethingeat = area.get_parent().get_parent()
+		nextgun = "Shotty"
+	elif  area.get_parent().get_parent().find_child("Laser"):
+		nextgun = "Shotty"

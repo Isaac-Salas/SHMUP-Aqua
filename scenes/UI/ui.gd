@@ -1,6 +1,8 @@
 extends Control
 @export var Player : PlayerComponent
 @onready var health = $Health
+@onready var o_2 = $O2
+
 @onready var stats
 
 # Called when the node enters the scene tree for the first time.
@@ -12,6 +14,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if stats != null:
-		health.value = stats.health
+		health.text = str(" HP: ", stats.health)
+		o_2.text = str(" O2: ", Player.O2)
 	else:
-		health.value = 0
+		health.text = str("HP: ", 0)
+	

@@ -10,6 +10,12 @@ extends Node2D
 @onready var fader = $IntroSongs/Fader
 @onready var ingame = $Ingame
 @onready var secondfader = $Ingame/Secondfader
+@onready var menumode = true
+@onready var creditrigger = $Creditos/Creditrigger
+@onready var creditos = $Creditos
+
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,7 +31,7 @@ func _ready():
 	fader.play("Fadein")
 	player.tree_exiting.connect(gameover)
 	control.animation_player.play("new_animation")
-	control.child_order_changed.connect(toggle)
+	#control.child_order_changed.connect(toggle)
 func looping():
 	ingame.stream = load("res://assets/Music/Ingame2.mp3")
 	ingame.stream.loop = true
@@ -35,33 +41,55 @@ func nextone():
 	intro_songs.stream.loop = true
 	intro_songs.play()
 
+	
+
 func toggle():
+	if player != null:
 	
-	match player.shooting:
-		true:
-			fader.play("Fadeout")
-			await fader.animation_finished
-			intro_songs.stop()
-			ingame.stream = load("res://assets/Music/Ingame1.mp3").duplicate()
-			ingame.play()
-			start_timer.start(2)
-			await start_timer.timeout
-			start_timer.queue_free()
-			Play = true
-	match player.punching:
-		true:
-			pass
-	
-	match player.eating:
-		true:
-			pass
+		match player.shooting:
+			true:
+				match menumode:
+					true:
+						player.o2down()
+						menumode = false
+						creditos.queue_free()
+						fader.play("Fadeout")
+						await fader.animation_finished
+						intro_songs.stop()
+						ingame.stream = load("res://assets/Music/Ingame1.mp3").duplicate()
+						ingame.play()
+						start_timer.start(2)
+						await start_timer.timeout
+						start_timer.queue_free()
+						Play = true
+						
+		match player.punching:
+			true:
+				match menumode:
+					true:
+						get_tree().quit()
+
+		match player.eating:
+			true:
+				match menumode:
+					true:
+						creditos.visible = true
+						creditrigger.play("Credits")
+						menumode = false
+						creditrigger.animation_finished
+						await creditrigger.animation_finished
+						get_tree().change_scene_to_file("res://scenes/world.tscn")
+						
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	toggle()
+	
 	if Input.is_action_just_pressed("ui_shoot") and game_over == true:
 		get_tree().change_scene_to_file("res://scenes/world.tscn")
-	
+	else:
+		pass
 	
 	match Play:
 		true:

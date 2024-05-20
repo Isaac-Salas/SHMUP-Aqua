@@ -24,7 +24,8 @@ func _physics_process(_delta):
 
 	match Player.eating:
 		true:
-			pass
+			spawner_component.spawn(control.global_position, self.get_parent())
+			self.queue_free()
 
 		false:
 			pass

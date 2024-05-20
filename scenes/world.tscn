@@ -1,16 +1,17 @@
-[gd_scene load_steps=34 format=3 uid="uid://l20746qikf75"]
+[gd_scene load_steps=38 format=3 uid="uid://l20746qikf75"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_fx04m"]
 [ext_resource type="PackedScene" uid="uid://jryehanqehmw" path="res://player/player.tscn" id="1_nahrg"]
 [ext_resource type="PackedScene" uid="uid://cxdohwfvqd131" path="res://scenes/Limits.tscn" id="2_7jcr3"]
 [ext_resource type="PackedScene" uid="uid://cj3yvsqywbuq2" path="res://assets/bakckgrounds/background1.tscn" id="4_3pwnq"]
 [ext_resource type="PackedScene" uid="uid://cmh3vs1g6u0wp" path="res://scenes/enemyGen/enemy_generator.tscn" id="5_52vd3"]
-[ext_resource type="Texture2D" uid="uid://bppbqbh1nmf2x" path="res://assets/bakckgrounds/Backggroundfilter.png" id="5_d3iw4"]
-[ext_resource type="Texture2D" uid="uid://c5bjuo2wgy5k7" path="res://assets/barquito.png" id="6_sshj1"]
+[ext_resource type="Texture2D" uid="uid://d4j5ml1d1m6i5" path="res://assets/bakckgrounds/Backggroundfilter.png" id="5_d3iw4"]
+[ext_resource type="Texture2D" uid="uid://ow1ctsn4qx1i" path="res://assets/barquito.png" id="6_sshj1"]
 [ext_resource type="PackedScene" uid="uid://c1bp32chdhsm7" path="res://scenes/Menu/Menu.tscn" id="8_pji3j"]
 [ext_resource type="PackedScene" uid="uid://bcnu8emceioc1" path="res://scenes/UI/ui.tscn" id="9_ebjyf"]
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="10_vvanu"]
-[ext_resource type="PackedScene" uid="uid://bl3x7itj3wt6j" path="res://projectiles/Anti-player/SingleSushi.tscn" id="11_hcxsx"]
+[ext_resource type="PackedScene" uid="uid://buk070ofgsa3y" path="res://projectiles/Anti-player/Temp.tscn" id="11_hcxsx"]
+[ext_resource type="Texture2D" uid="uid://8sdnjjmvmyme" path="res://scenes/Credits/Credits.png" id="12_7nkdb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dsmr5"]
 atlas = ExtResource("5_d3iw4")
@@ -189,6 +190,63 @@ _data = {
 "RESET": SubResource("Animation_3phn4")
 }
 
+[sub_resource type="Animation" id="Animation_bwqc5"]
+resource_name = "Credits"
+length = 35.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Creditos:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(60, -0.25, 0, 0.25, 0, 60, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 30)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Creditos:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(280, -0.25, 0, 0.25, 0, -120, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 30)
+}
+
+[sub_resource type="Animation" id="Animation_g4fle"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Creditos:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(60, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Creditos:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(280, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yi5lf"]
+_data = {
+"Credits": SubResource("Animation_bwqc5"),
+"RESET": SubResource("Animation_g4fle")
+}
+
 [node name="World" type="Node2D" node_paths=PackedStringArray("EnemyGen")]
 script = ExtResource("1_fx04m")
 EnemyGen = NodePath("EnemyGenerator")
@@ -206,7 +264,6 @@ centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_nahrg")]
 position = Vector2(64, 135)
-ammo = 100
 
 [node name="EnemyGenerator" parent="." instance=ExtResource("5_52vd3")]
 
@@ -251,3 +308,15 @@ bus = &"Musica"
 
 [node name="Shot" parent="." instance=ExtResource("11_hcxsx")]
 position = Vector2(426, 133)
+
+[node name="Creditos" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(60, 280)
+texture = ExtResource("12_7nkdb")
+centered = false
+
+[node name="Creditrigger" type="AnimationPlayer" parent="Creditos"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yi5lf")
+}

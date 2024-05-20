@@ -23,6 +23,7 @@ func _process(delta):
 	
 	match active:
 		true:
+			actor.rotation_degrees += rotation
 			var test = (playerpos.y - actor.global_position.y)*(delta*velocity.y)
 			actor.translate(Vector2(velocity.x*delta,test))
 		false:

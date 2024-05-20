@@ -96,6 +96,7 @@ ui_eat={
 2d_physics/layer_3="Edible"
 2d_physics/layer_4="Punchable"
 2d_physics/layer_5="Parry"
+2d_physics/layer_6="Air"
 2d_physics/layer_10="DeadStuff"
 
 [rendering]
