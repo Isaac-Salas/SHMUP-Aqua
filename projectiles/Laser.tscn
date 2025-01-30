@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bhca0fljclygd"]
 
-[ext_resource type="Script" path="res://projectiles/Laser.gd" id="1_q4nja"]
-[ext_resource type="PackedScene" uid="uid://dx7ji7kkxuest" path="res://projectiles/Laserpiece.tscn" id="3_kdc76"]
-[ext_resource type="Script" path="res://components/scale_component.gd" id="4_6q14c"]
+[ext_resource type="Script" path="res://Projectiles/Laser.gd" id="1_q4nja"]
+[ext_resource type="PackedScene" uid="uid://dx7ji7kkxuest" path="res://Projectiles/Laserpiece.tscn" id="3_kdc76"]
+[ext_resource type="Script" path="res://Components/scale_component.gd" id="4_6q14c"]
 
 [node name="Shot" type="Node2D"]
 script = ExtResource("1_q4nja")

@@ -54,5 +54,3 @@ func _process(delta):
 	orb_8.global_position += (Vector2(orb_7.global_position.x+offset ,orb_7.global_position.y) - orb_8.global_position)*(delta*speed)
 	orb_9.global_position += (Vector2(orb_8.global_position.x+offset ,orb_8.global_position.y) - orb_9.global_position)*(delta*speed)
 	orb_10.global_position += (Vector2(orb_9.global_position.x+offset ,orb_9.global_position.y) - orb_10.global_position)*(delta*speed)
-
-

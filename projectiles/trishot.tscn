@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bh0prxv2qup75"]
 
-[ext_resource type="Script" path="res://projectiles/center_shot.gd" id="1_8yemf"]
-[ext_resource type="Texture2D" uid="uid://bf0qfafs7n2n7" path="res://assets/Projectile/Burbujita.png" id="2_j3lfv"]
-[ext_resource type="Script" path="res://components/hitbox_component.gd" id="3_bf1qf"]
-[ext_resource type="Script" path="res://components/scale_component.gd" id="4_ia7kc"]
-[ext_resource type="Script" path="res://components/move_component.gd" id="5_vetav"]
+[ext_resource type="Script" path="res://Projectiles/center_shot.gd" id="1_8yemf"]
+[ext_resource type="Texture2D" uid="uid://datmfpde3vhus" path="res://Assets/Projectile/Burbujita.png" id="2_j3lfv"]
+[ext_resource type="Script" path="res://Components/hitbox_component.gd" id="3_bf1qf"]
+[ext_resource type="Script" path="res://Components/scale_component.gd" id="4_ia7kc"]
+[ext_resource type="Script" path="res://Components/move_component.gd" id="5_vetav"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix8ot"]
 radius = 8.0

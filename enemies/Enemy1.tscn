@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://1db6npbnb4mr"]
 
-[ext_resource type="PackedScene" uid="uid://kbl5vm53q020" path="res://enemies/EnemyTemp.tscn" id="1_awjix"]
-[ext_resource type="Texture2D" uid="uid://c0qvkct4ws38t" path="res://assets/Enemies/Clownfish.png" id="2_rlv7i"]
-[ext_resource type="PackedScene" uid="uid://buk070ofgsa3y" path="res://projectiles/Anti-player/Temp.tscn" id="3_d0287"]
+[ext_resource type="PackedScene" uid="uid://kbl5vm53q020" path="res://Enemies/EnemyTemp.tscn" id="1_awjix"]
+[ext_resource type="Texture2D" uid="uid://c0qvkct4ws38t" path="res://Assets/Enemies/Clownfish.png" id="2_rlv7i"]
+[ext_resource type="PackedScene" uid="uid://buk070ofgsa3y" path="res://Projectiles/Anti-player/Temp.tscn" id="3_d0287"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvfbo"]
 atlas = ExtResource("2_rlv7i")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcnu8emceioc1"]
 
-[ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_vukha"]
-[ext_resource type="FontFile" uid="uid://cycpnae7qyrxg" path="res://fonts/retro_computer_personal_use.ttf" id="2_sn4ds"]
+[ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_vukha"]
+[ext_resource type="FontFile" uid="uid://cycpnae7qyrxg" path="res://Fonts/retro_computer_personal_use.ttf" id="2_sn4ds"]
 
 [node name="UI" type="Control"]
 layout_mode = 3

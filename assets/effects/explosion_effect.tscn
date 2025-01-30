@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://cy2fhiil4ujuw"]
 
-[ext_resource type="Script" path="res://components/onetime_animated_effect.gd" id="1_0kn8f"]
-[ext_resource type="Texture2D" uid="uid://ykhpbca2fdef" path="res://assets/effects/Bubble.png" id="1_8jpqv"]
-[ext_resource type="Script" path="res://components/move_component.gd" id="2_0xnep"]
-[ext_resource type="Script" path="res://components/position_clamp_component.gd" id="4_c2we5"]
+[ext_resource type="Script" path="res://Components/onetime_animated_effect.gd" id="1_0kn8f"]
+[ext_resource type="Texture2D" uid="uid://ykhpbca2fdef" path="res://Assets/effects/Bubble.png" id="1_8jpqv"]
+[ext_resource type="Script" path="res://Components/move_component.gd" id="2_0xnep"]
+[ext_resource type="Script" path="res://Components/position_clamp_component.gd" id="4_c2we5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ur4od"]
 atlas = ExtResource("1_8jpqv")

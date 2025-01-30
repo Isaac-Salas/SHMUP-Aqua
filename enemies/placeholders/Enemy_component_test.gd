@@ -17,5 +17,3 @@ extends RigidBody2D
 		#angular_velocity = 100
 		#move_component.active = false
 		#set_deferred("freeze", false)
-
-

@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://buk070ofgsa3y"]
 
-[ext_resource type="Script" path="res://projectiles/Anti-player/SushiComponent.gd" id="1_70us5"]
-[ext_resource type="Texture2D" uid="uid://dkhc5ldpokgxt" path="res://assets/Projectile/Comestibles/SushiSingle.png" id="2_n5uv2"]
-[ext_resource type="Script" path="res://components/hitbox_component.gd" id="3_po8a0"]
-[ext_resource type="Script" path="res://components/scale_component.gd" id="4_6jicw"]
-[ext_resource type="Script" path="res://projectiles/Anti-player/AntiPlayerMoveComponent.gd" id="5_wnjdi"]
-[ext_resource type="Script" path="res://components/stats_component.gd" id="6_kq0o3"]
-[ext_resource type="Script" path="res://components/destroyed_component.gd" id="7_dc1da"]
-[ext_resource type="Script" path="res://components/spawner_component.gd" id="8_fjlm3"]
-[ext_resource type="PackedScene" uid="uid://depw2krs5w0lx" path="res://assets/effects/crumbs.tscn" id="9_4wykm"]
+[ext_resource type="Script" path="res://Projectiles/Anti-player/SushiComponent.gd" id="1_70us5"]
+[ext_resource type="Texture2D" uid="uid://dkhc5ldpokgxt" path="res://Assets/Projectile/Comestibles/SushiSingle.png" id="2_n5uv2"]
+[ext_resource type="Script" path="res://Components/hitbox_component.gd" id="3_po8a0"]
+[ext_resource type="Script" path="res://Components/scale_component.gd" id="4_6jicw"]
+[ext_resource type="Script" path="res://Projectiles/Anti-player/AntiPlayerMoveComponent.gd" id="5_wnjdi"]
+[ext_resource type="Script" path="res://Components/stats_component.gd" id="6_kq0o3"]
+[ext_resource type="Script" path="res://Components/destroyed_component.gd" id="7_dc1da"]
+[ext_resource type="Script" path="res://Components/spawner_component.gd" id="8_fjlm3"]
+[ext_resource type="PackedScene" uid="uid://depw2krs5w0lx" path="res://Assets/effects/crumbs.tscn" id="9_4wykm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dj580"]
 size = Vector2(12, 12)

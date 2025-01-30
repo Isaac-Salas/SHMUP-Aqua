@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://ebjh0ecljxba"]
 
-[ext_resource type="Script" path="res://projectiles/center_shot.gd" id="1_t10eu"]
-[ext_resource type="Script" path="res://components/move_component.gd" id="1_yr02y"]
-[ext_resource type="Texture2D" uid="uid://c5pstpa2l2bk5" path="res://assets/Projectile/Fishbone.png" id="2_15xqq"]
-[ext_resource type="Script" path="res://components/hitbox_component.gd" id="3_hbs71"]
-[ext_resource type="Script" path="res://components/scale_component.gd" id="4_ttpa6"]
+[ext_resource type="Script" path="res://Projectiles/center_shot.gd" id="1_t10eu"]
+[ext_resource type="Script" path="res://Components/move_component.gd" id="1_yr02y"]
+[ext_resource type="Texture2D" uid="uid://c5pstpa2l2bk5" path="res://Assets/Projectile/Fishbone.png" id="2_15xqq"]
+[ext_resource type="Script" path="res://Components/hitbox_component.gd" id="3_hbs71"]
+[ext_resource type="Script" path="res://Components/scale_component.gd" id="4_ttpa6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dj580"]
 size = Vector2(8, 5)

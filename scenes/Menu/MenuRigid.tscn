@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://cuyslfgdk7lmf"]
 
-[ext_resource type="Texture2D" uid="uid://b4u47qou1wejd" path="res://assets/Menu/Titulo.png" id="2_lfx1d"]
-[ext_resource type="FontFile" uid="uid://xqyel50d34il" path="res://fonts/ka1.ttf" id="3_aeixg"]
-[ext_resource type="LabelSettings" uid="uid://cm8e5dkxqble0" path="res://scenes/Menu/Menu.tres" id="3_q41b3"]
+[ext_resource type="Texture2D" uid="uid://b4u47qou1wejd" path="res://Assets/Menu/Titulo.png" id="2_lfx1d"]
+[ext_resource type="FontFile" uid="uid://xqyel50d34il" path="res://Fonts/ka1.ttf" id="3_aeixg"]
+[ext_resource type="LabelSettings" uid="uid://cm8e5dkxqble0" path="res://Scenes/Menu/Menu.tres" id="3_q41b3"]
 
 [sub_resource type="GDScript" id="GDScript_0f2tb"]
 script/source = "extends Control

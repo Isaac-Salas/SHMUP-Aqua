@@ -143,5 +143,3 @@ func _on_area_2d_body_entered(body):
 		press_shoot.set_deferred("freeze", false)
 		done = true
 		piece.queue_free()
-
-

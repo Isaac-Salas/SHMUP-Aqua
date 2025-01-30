@@ -1,10 +1,10 @@
 [gd_scene load_steps=21 format=3 uid="uid://dx7ji7kkxuest"]
 
-[ext_resource type="Texture2D" uid="uid://dlebplxanjh3t" path="res://assets/Projectile/LaserFin.png" id="1_e1fp4"]
-[ext_resource type="Texture2D" uid="uid://dlctanbn8dqk8" path="res://assets/Projectile/LaserIn.png" id="2_h7k1p"]
-[ext_resource type="Script" path="res://components/hitbox_component.gd" id="2_ikolu"]
-[ext_resource type="Texture2D" uid="uid://n7civfxfgaol" path="res://assets/Projectile/LaserMid.png" id="3_2wof1"]
-[ext_resource type="Script" path="res://components/scale_component.gd" id="3_m3dlo"]
+[ext_resource type="Texture2D" uid="uid://b5ybkq6q2xi77" path="res://Assets/Projectile/LaserFin.png" id="1_e1fp4"]
+[ext_resource type="Texture2D" uid="uid://cp17xpq3656bc" path="res://Assets/Projectile/LaserIn.png" id="2_h7k1p"]
+[ext_resource type="Script" path="res://Components/hitbox_component.gd" id="2_ikolu"]
+[ext_resource type="Texture2D" uid="uid://bxskac2rqlyi8" path="res://Assets/Projectile/LaserMid.png" id="3_2wof1"]
+[ext_resource type="Script" path="res://Components/scale_component.gd" id="3_m3dlo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cbph"]
 atlas = ExtResource("1_e1fp4")
